@@ -1,0 +1,233 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { SiteNav } from "../../../components/SiteNav";
+import { PandalAartiIcs } from "../../../components/PandalAartiIcs";
+import {
+  getPandalBySlug,
+  loadPandals,
+  mapsLinks,
+  UTSAV_YEAR,
+  whatsappShareUrl,
+} from "../../../lib/festivals";
+
+export function getStaticPaths() {
+  return loadPandals(UTSAV_YEAR).map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const pandal = getPandalBySlug(slug!, UTSAV_YEAR);
+if (!pandal) {
+  throw new Error(`Unknown pandal slug: ${slug}`);
+}
+
+const links = mapsLinks(pandal.coords, pandal.name.en);
+const aartiTimes = pandal.schedule?.aarti ?? [];
+const share = whatsappShareUrl(
+  `${pandal.name.en} · Jabalpurverse Utsav ${UTSAV_YEAR}\nhttps://jabalpurverse.prhinditips.workers.dev/utsav/pandals/${pandal.slug}/`,
+);
+---
+
+<BaseLayout
+  title={`${pandal.name.en} · Utsav ${UTSAV_YEAR} · Jabalpurverse`}
+  description={pandal.highlights?.en ?? pandal.name.en}
+>
+  <div class="hub hub--immersive hub--utsav">
+    <header class="ghat-hero ghat-hero--solid">
+      <div class="ghat-hero__veil" aria-hidden="true" />
+      <div class="ghat-hero__top">
+        <SiteNav client:load variant="hero" current="utsav" />
+      </div>
+      <div class="ghat-hero__copy">
+        <p class="ghat-hero__crumb">
+          <a href="/utsav">
+            <span data-en>Utsav Hub</span>
+            <span data-hi>उत्सव हब</span>
+          </a>
+        </p>
+        <p class="ghat-hero__greeting" data-jv-greeting>
+          <span lang="hi">नर्मदे हर</span>
+          <span aria-hidden="true"> · </span>
+          <span>Narmade Har</span>
+        </p>
+        <h1 class="ghat-hero__title">
+          <span lang="hi">{pandal.name.hi}</span>
+          <span class="hub__title-sep" aria-hidden="true"> · </span>
+          <span>{pandal.name.en}</span>
+        </h1>
+        {
+          pandal.area && (
+            <p class="utsav-hero__window">{pandal.area}</p>
+          )
+        }
+        {
+          pandal.status === "draft" && (
+            <p class="ghat-hero__draft">
+              <span data-en>Draft — confirm aarti, darshan and access locally before you travel.</span>
+              <span data-hi>ड्राफ़्ट — यात्रा से पहले आरती, दर्शन और पहुँच स्थानीय रूप से पुष्टि करें।</span>
+            </p>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      pandal.highlights && (
+        <section class="hub-chapter hub-chapter--solid hub-chapter--story" aria-labelledby="about-heading">
+          <div class="hub-chapter__frame">
+            <div class="hub-chapter__panel ghat-story">
+              <h2 id="about-heading" class="hub-chapter__h2">
+                <span data-en>About</span>
+                <span data-hi>परिचय</span>
+              </h2>
+              <p class="hub-chapter__lead ghat-story__body">
+                <span data-en>{pandal.highlights.en}</span>
+                <span data-hi>{pandal.highlights.hi}</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      (pandal.schedule || aartiTimes.length > 0) && (
+        <section class="ghat-band" aria-labelledby="sched-heading">
+          <div class="ghat-band__frame">
+            <h2 id="sched-heading" class="ghat-maps__h2">
+              <span data-en>Aarti & darshan</span>
+              <span data-hi>आरती और दर्शन</span>
+            </h2>
+            {
+              aartiTimes.length > 0 && (
+                <p class="utsav-aarti-times">
+                  <span data-en>Listed aarti times: {aartiTimes.join(" · ")}</span>
+                  <span data-hi>सूचीबद्ध आरती समय: {aartiTimes.join(" · ")}</span>
+                </p>
+              )
+            }
+            {
+              pandal.schedule?.darshan_hours && (
+                <p>
+                  <span data-en>{pandal.schedule.darshan_hours}</span>
+                  <span data-hi>{pandal.schedule.darshan_hours}</span>
+                </p>
+              )
+            }
+            {
+              aartiTimes.length > 0 && (
+                <PandalAartiIcs
+                  client:visible
+                  placeNameEn={pandal.name.en}
+                  placeNameHi={pandal.name.hi}
+                  slug={pandal.slug}
+                  aartiTimes={aartiTimes}
+                />
+              )
+            }
+          </div>
+        </section>
+      )
+    }
+
+    <section class="ghat-care" aria-labelledby="tips-heading">
+      <div class="ghat-care__frame">
+        <h2 id="tips-heading" class="ghat-care__h2">
+          <span data-en>Visit tips</span>
+          <span data-hi>यात्रा सुझाव</span>
+        </h2>
+        <div class="ghat-care__grid">
+          {
+            pandal.crowd_tip && (
+              <div class="ghat-care__panel">
+                <h3 class="ghat-care__h3">
+                  <span data-en>Crowds</span>
+                  <span data-hi>भीड़</span>
+                </h3>
+                <p>
+                  <span data-en>{pandal.crowd_tip.en}</span>
+                  <span data-hi>{pandal.crowd_tip.hi}</span>
+                </p>
+              </div>
+            )
+          }
+          {
+            pandal.access_note && (
+              <div class="ghat-care__panel">
+                <h3 class="ghat-care__h3">
+                  <span data-en>Access</span>
+                  <span data-hi>पहुँच</span>
+                </h3>
+                <p>
+                  <span data-en>{pandal.access_note.en}</span>
+                  <span data-hi>{pandal.access_note.hi}</span>
+                </p>
+              </div>
+            )
+          }
+          {
+            pandal.family_notes && (
+              <div class="ghat-care__panel">
+                <h3 class="ghat-care__h3">
+                  <span data-en>Families</span>
+                  <span data-hi>परिवार</span>
+                </h3>
+                <p>
+                  <span data-en>{pandal.family_notes.en}</span>
+                  <span data-hi>{pandal.family_notes.hi}</span>
+                </p>
+              </div>
+            )
+          }
+          <div class="ghat-care__panel ghat-care__panel--safety">
+            <h3 class="ghat-care__h3">
+              <span data-en>Safety</span>
+              <span data-hi>सुरक्षा</span>
+            </h3>
+            <p>
+              <span data-en>{pandal.safety.en}</span>
+              <span data-hi>{pandal.safety.hi}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ghat-maps" aria-labelledby="maps-heading">
+      <div class="ghat-maps__frame">
+        <h2 id="maps-heading" class="ghat-maps__h2">
+          <span data-en>Find your way</span>
+          <span data-hi>रास्ता खोजें</span>
+        </h2>
+        <div class="ghat-maps__actions">
+          <a class="ghat-maps__btn ghat-maps__btn--primary" href={links.geo}>
+            <span data-en>Open in maps</span>
+            <span data-hi>मैप्स में खोलें</span>
+          </a>
+          <a class="ghat-maps__btn" href={links.osm} rel="noopener noreferrer" target="_blank">
+            OpenStreetMap
+          </a>
+          <a class="ghat-maps__btn" href={links.google} rel="noopener noreferrer" target="_blank">
+            Google Maps
+          </a>
+          <a class="ghat-maps__btn" href={share} rel="noopener noreferrer" target="_blank">
+            <span data-en>Share</span>
+            <span data-hi>साझा करें</span>
+          </a>
+        </div>
+        <p class="ghat-maps__note">
+          <span data-en>Deep links only — no Google Maps Platform API.</span>
+          <span data-hi>केवल डीप लिंक — कोई Google Maps Platform API नहीं।</span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="hub-foot">
+      <p>
+        <a href="/utsav">
+          <span data-en>Back to Utsav Hub</span>
+          <span data-hi>उत्सव हब पर वापस</span>
+        </a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>

@@ -22,3 +22,14 @@ Failed validation blocks deploy.
 ## Drafts
 
 Use `status: draft` until every fact is sourced and dated (BRD R7). The `bhedaghat.yaml` file is an intentional draft.
+
+## Festivals (Utsav Mode)
+
+- Path: `content/festivals/<year>/`
+  - `meta.yaml` — festival windows (confirm against Panchang before treating as official)
+  - `pandals/<slug>.yaml` — pandal cards
+  - `visarjan/<slug>.yaml` — official immersion kunds/ghats
+  - `notices/<slug>.yaml` — traffic/safety notices (**require** `source` + `valid_to`)
+- Pandals: `published` requires `sources[]` and `verified_at`. Without `verified_at`, a pandal never appears in the featured (published) list.
+- Routes / chal-samaroh GeoJSON: only when sourced from police/Nagar Nigam/samiti notices — do not invent paths.
+- Promote draft → published only after hand-checking aarti/darshan times and coords for the current year.

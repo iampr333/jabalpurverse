@@ -1223,3 +1223,148 @@ html:has(.hub--immersive) body {
     transition: none;
   }
 }
+
+/* ---- Utsav hub ---- */
+.utsav-hero__window {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, #f7f5f1 80%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
+.utsav-hero__share {
+  margin: 1.15rem 0 0;
+}
+
+.utsav-empty {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, #f7f5f1 78%, transparent);
+  max-width: 40rem;
+  line-height: 1.5;
+}
+
+.utsav-subh {
+  margin: 1.5rem 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--diya-soft);
+}
+
+.utsav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 48rem;
+}
+
+.utsav-list > li + li {
+  margin-top: 0.65rem;
+}
+
+.utsav-list__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, #f7f5f1 18%, transparent);
+  color: #f7f5f1;
+  text-decoration: none;
+}
+
+.utsav-list__link:hover .utsav-list__name,
+.utsav-list__link:focus-visible .utsav-list__name {
+  color: var(--diya-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.utsav-list__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.utsav-list__meta {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, #f7f5f1 60%, transparent);
+}
+
+.utsav-list__badge {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--diya-soft);
+}
+
+.utsav-visarjan {
+  padding: 1rem 0;
+  border-bottom: 1px solid color-mix(in srgb, #f7f5f1 14%, transparent);
+  color: color-mix(in srgb, #f7f5f1 88%, transparent);
+  line-height: 1.5;
+}
+
+.utsav-eco {
+  margin: 0.5rem 0 0;
+  font-size: 0.92rem;
+  color: var(--diya-soft);
+}
+
+.utsav-notice-meta {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: color-mix(in srgb, #f7f5f1 55%, transparent);
+}
+
+.utsav-aarti-times {
+  margin: 0 0 0.75rem;
+  color: #f7f5f1;
+  font-size: 1.05rem;
+}
+
+.utsav-ics {
+  margin-top: 1rem;
+}
+
+.utsav-ics__label {
+  margin: 0 0 0.5rem;
+  color: color-mix(in srgb, #f7f5f1 85%, transparent);
+}
+
+.utsav-ics__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.utsav-ics__btn {
+  min-height: 2.75rem;
+  padding: 0.45rem 1rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--diya);
+  color: #f7f5f1;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.utsav-ics__btn:hover,
+.utsav-ics__btn:focus-visible {
+  background: color-mix(in srgb, var(--diya) 82%, #000);
+}
+
+.utsav-ics__note {
+  margin: 0.65rem 0 0;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, #f7f5f1 55%, transparent);
+}
+
+.hub-chapter--story a {
+  color: var(--diya-soft);
+}

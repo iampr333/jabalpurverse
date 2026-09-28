@@ -1,0 +1,23 @@
+# Draft — Nagar Nigam kunds change year to year; confirm 2026 list before publishing.
+id: hanumantal-visarjan
+slug: hanumantal-visarjan
+year: 2026
+name:
+  en: Hanumantal (immersion kund)
+  hi: हनुमानताल (विसर्जन कुंड)
+kind: kund
+coords: [79.9338, 23.1688]
+area: Hanumantal
+summary:
+  en: Designated immersion kund area historically inspected by the municipal administration for lighting, sanitation, safety and staffing during festival season. Confirm the current year’s official kund list before travel.
+  hi: त्योहारी सीज़न में रोशनी, स्वच्छता, सुरक्षा और स्टाफिंग के लिए नगर प्रशासन द्वारा जाँचे गए निर्दिष्ट विसर्जन कुंड क्षेत्र। यात्रा से पहले चालू वर्ष की आधिकारिक कुंड सूची पुष्टि करें।
+eco_note:
+  en: Prefer announced kunds and follow Nagar Nigam / police guidance on eco-friendly immersion. Do not invent alternate river sites.
+  hi: घोषित कुंडों को प्राथमिकता दें और पर्यावरण-अनुकूल विसर्जन पर नगर निगम / पुलिस मार्गदर्शन का पालन करें। वैकल्पिक नदी स्थल स्वयं न गढ़ें।
+sources:
+  - type: editorial
+    url: ""
+    accessed: 2026-09-28
+    published_at: 2026-09-28
+status: draft
+verified_at: null

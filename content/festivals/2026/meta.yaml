@@ -1,0 +1,22 @@
+# Festival year meta — confirm window dates against a Panchang + local samiti announcements before publishing.
+year: 2026
+festivals:
+  - id: durga
+    name:
+      en: Durga Puja / Shardiya Navratri
+      hi: दुर्गा पूजा / शारदीय नवरात्रि
+    # Approximate public calendars; editor must confirm.
+    window_start: 2026-10-11
+    window_end: 2026-10-20
+    dates_note:
+      en: Draft window — confirm start/end against a Panchang and local samiti announcements before treating as official.
+      hi: ड्राफ़्ट अवधि — आधिकारिक मानने से पहले पंचांग और स्थानीय समिति घोषणाओं से आरंभ/समाप्ति पुष्टि करें।
+  - id: kali
+    name:
+      en: Kali Puja
+      hi: काली पूजा
+    window_start: 2026-11-08
+    window_end: 2026-11-09
+    dates_note:
+      en: Approximate — confirm locally before publishing reminders.
+      hi: अनुमानित — अनुस्मारक प्रकाशित करने से पहले स्थानीय रूप से पुष्टि करें।

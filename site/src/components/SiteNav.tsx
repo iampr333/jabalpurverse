@@ -1,13 +1,14 @@
 import { useEffect, useState } from "preact/hooks";
 
 export type Lang = "en" | "hi";
-export type NavCurrent = "home" | "narmada" | "support";
+export type NavCurrent = "home" | "narmada" | "utsav" | "support";
 
 const copy = {
   en: {
     brand: "Jabalpurverse",
     home: "Home",
     narmada: "Narmada",
+    utsav: "Utsav",
     support: "Support",
     lang: "हिंदी",
     greetingOff: "Hide greeting",
@@ -17,6 +18,7 @@ const copy = {
     brand: "जबलपुरवर्स",
     home: "होम",
     narmada: "नर्मदा",
+    utsav: "उत्सव",
     support: "सहयोग",
     lang: "English",
     greetingOff: "अभिवादन छिपाएँ",
@@ -45,7 +47,7 @@ type Props = {
   current?: NavCurrent;
 };
 
-/** Shared bilingual chrome: brand, Home · Narmada · Support, lang + greeting. */
+/** Shared bilingual chrome: brand, Home · Narmada · Utsav · Support, lang + greeting. */
 export function SiteNav({ variant = "page", current }: Props) {
   const [lang, setLang] = useState<Lang>("en");
   const [greetingOn, setGreetingOn] = useState(true);
@@ -109,6 +111,13 @@ export function SiteNav({ variant = "page", current }: Props) {
           aria-current={current === "narmada" ? "page" : undefined}
         >
           {t.narmada}
+        </a>
+        <a
+          class={`${root}__link`}
+          href="/utsav"
+          aria-current={current === "utsav" ? "page" : undefined}
+        >
+          {t.utsav}
         </a>
         <a
           class={`${root}__support`}

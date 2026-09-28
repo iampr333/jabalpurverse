@@ -1,0 +1,272 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SiteNav } from "../../components/SiteNav";
+import {
+  loadDraftPandals,
+  loadFeaturedPandals,
+  loadFestivalMeta,
+  loadNotices,
+  loadVisarjanPoints,
+  UTSAV_YEAR,
+  whatsappShareUrl,
+} from "../../lib/festivals";
+
+const meta = loadFestivalMeta(UTSAV_YEAR);
+const featured = loadFeaturedPandals(UTSAV_YEAR);
+const drafts = loadDraftPandals(UTSAV_YEAR);
+const visarjan = loadVisarjanPoints(UTSAV_YEAR);
+const notices = loadNotices(UTSAV_YEAR);
+const durga = meta?.festivals.find((f) => f.id === "durga");
+
+const shareText = `Jabalpurverse Utsav ${UTSAV_YEAR} — Durga Puja pandals & visarjan guide. नर्मदे हर · https://jabalpurverse.prhinditips.workers.dev/utsav/`;
+const wa = whatsappShareUrl(shareText);
+---
+
+<BaseLayout
+  title={`Utsav ${UTSAV_YEAR} · Jabalpurverse`}
+  description="Durga Puja pandals, visarjan kunds, and festival safety notices for Jabalpur — bilingual HI/EN."
+>
+  <div class="hub hub--immersive hub--utsav">
+    <header class="ghat-hero ghat-hero--solid utsav-hero">
+      <div class="ghat-hero__veil" aria-hidden="true" />
+      <div class="ghat-hero__top">
+        <SiteNav client:load variant="hero" current="utsav" />
+      </div>
+      <div class="ghat-hero__copy">
+        <p class="ghat-hero__greeting" data-jv-greeting>
+          <span lang="hi">नर्मदे हर</span>
+          <span aria-hidden="true"> · </span>
+          <span>Narmade Har</span>
+        </p>
+        <h1 class="ghat-hero__title">
+          <span data-en>Utsav {UTSAV_YEAR}</span>
+          <span data-hi>उत्सव {UTSAV_YEAR}</span>
+        </h1>
+        <p class="ghat-hero__summary">
+          <span data-en>
+            Durga Puja pandals, immersion kunds, and dated notices — confirm everything locally
+            before you go.
+          </span>
+          <span data-hi>
+            दुर्गा पूजा पंडाल, विसर्जन कुंड और दिनांकित सूचनाएँ — जाने से पहले सब स्थानीय रूप से पुष्टि करें।
+          </span>
+        </p>
+        {
+          durga && (
+            <p class="utsav-hero__window">
+              <span data-en>
+                Draft window: {durga.window_start} → {durga.window_end}
+              </span>
+              <span data-hi>
+                ड्राफ़्ट अवधि: {durga.window_start} → {durga.window_end}
+              </span>
+            </p>
+          )
+        }
+        {
+          durga?.dates_note && (
+            <p class="ghat-hero__draft">
+              <span data-en>{durga.dates_note.en}</span>
+              <span data-hi>{durga.dates_note.hi}</span>
+            </p>
+          )
+        }
+        <p class="utsav-hero__share">
+          <a class="ghat-maps__btn ghat-maps__btn--primary" href={wa} rel="noopener noreferrer" target="_blank">
+            <span data-en>Share on WhatsApp</span>
+            <span data-hi>WhatsApp पर साझा करें</span>
+          </a>
+        </p>
+      </div>
+    </header>
+
+    <section class="ghat-care" aria-labelledby="pandal-heading">
+      <div class="ghat-care__frame">
+        <h2 id="pandal-heading" class="ghat-care__h2">
+          <span data-en>Pandal directory</span>
+          <span data-hi>पंडाल निर्देशिका</span>
+        </h2>
+        {
+          featured.length === 0 && (
+            <p class="utsav-empty">
+              <span data-en>
+                No published pandals yet for {UTSAV_YEAR}. Draft listings below are for editor
+                preview only.
+              </span>
+              <span data-hi>
+                {UTSAV_YEAR} के लिए अभी कोई प्रकाशित पंडाल नहीं। नीचे ड्राफ़्ट सूची केवल संपादक पूर्वावलोकन के लिए है।
+              </span>
+            </p>
+          )
+        }
+        {
+          featured.length > 0 && (
+            <ul class="utsav-list">
+              {featured.map((p) => (
+                <li>
+                  <a class="utsav-list__link" href={`/utsav/pandals/${p.slug}`}>
+                    <span class="utsav-list__name">
+                      <span data-en>{p.name.en}</span>
+                      <span data-hi>{p.name.hi}</span>
+                    </span>
+                    {p.area && <span class="utsav-list__meta">{p.area}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        {
+          drafts.length > 0 && (
+            <>
+              <h3 class="utsav-subh">
+                <span data-en>Draft listings</span>
+                <span data-hi>ड्राफ़्ट सूची</span>
+              </h3>
+              <ul class="utsav-list">
+                {drafts.map((p) => (
+                  <li>
+                    <a class="utsav-list__link" href={`/utsav/pandals/${p.slug}`}>
+                      <span class="utsav-list__name">
+                        <span data-en>{p.name.en}</span>
+                        <span data-hi>{p.name.hi}</span>
+                      </span>
+                      <span class="utsav-list__badge">
+                        <span data-en>Draft</span>
+                        <span data-hi>ड्राफ़्ट</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="ghat-maps" aria-labelledby="visarjan-heading">
+      <div class="ghat-maps__frame">
+        <h2 id="visarjan-heading" class="ghat-maps__h2">
+          <span data-en>Visarjan points</span>
+          <span data-hi>विसर्जन स्थल</span>
+        </h2>
+        <p class="utsav-empty">
+          <span data-en>
+            Official kund lists change every year. Use sourced points only — never invent river
+            immersion sites.
+          </span>
+          <span data-hi>
+            आधिकारिक कुंड सूची हर वर्ष बदलती है। केवल स्रोतयुक्त स्थल उपयोग करें — नदी विसर्जन स्थल स्वयं न गढ़ें।
+          </span>
+        </p>
+        <ul class="utsav-list">
+          {
+            visarjan.map((v) => (
+              <li class="utsav-visarjan">
+                <p class="utsav-list__name">
+                  <span data-en>{v.name.en}</span>
+                  <span data-hi>{v.name.hi}</span>
+                  {v.status === "draft" && (
+                    <span class="utsav-list__badge">
+                      <span data-en>Draft</span>
+                      <span data-hi>ड्राफ़्ट</span>
+                    </span>
+                  )}
+                </p>
+                <p>
+                  <span data-en>{v.summary.en}</span>
+                  <span data-hi>{v.summary.hi}</span>
+                </p>
+                {
+                  v.eco_note && (
+                    <p class="utsav-eco">
+                      <span data-en>{v.eco_note.en}</span>
+                      <span data-hi>{v.eco_note.hi}</span>
+                    </p>
+                  )
+                }
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="ghat-care" aria-labelledby="notices-heading">
+      <div class="ghat-care__frame">
+        <h2 id="notices-heading" class="ghat-care__h2">
+          <span data-en>Notices</span>
+          <span data-hi>सूचनाएँ</span>
+        </h2>
+        <ul class="utsav-list">
+          {
+            notices.map((n) => (
+              <li class="ghat-care__panel">
+                <h3 class="ghat-care__h3">
+                  <span data-en>{n.title.en}</span>
+                  <span data-hi>{n.title.hi}</span>
+                  {n.status === "draft" && (
+                    <span class="utsav-list__badge">
+                      <span data-en>Draft</span>
+                      <span data-hi>ड्राफ़्ट</span>
+                    </span>
+                  )}
+                </h3>
+                <p>
+                  <span data-en>{n.body.en}</span>
+                  <span data-hi>{n.body.hi}</span>
+                </p>
+                <p class="utsav-notice-meta">
+                  <span data-en>
+                    Valid until {n.valid_to} · source: {n.source.type}
+                  </span>
+                  <span data-hi>
+                    वैध {n.valid_to} तक · स्रोत: {n.source.type}
+                  </span>
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="hub-safety" aria-labelledby="utsav-safety-heading">
+      <div class="hub-safety__frame">
+        <h2 id="utsav-safety-heading" class="hub-safety__h2">
+          <span data-en>Festival safety</span>
+          <span data-hi>त्योहारी सुरक्षा</span>
+        </h2>
+        <ul class="hub-safety__list">
+          <li>
+            <span data-en>Set a family meeting point. Stay out of live traffic lanes.</span>
+            <span data-hi>पारिवारिक मिलन बिंदु तय करें। चलते यातायात लेन से दूर रहें।</span>
+          </li>
+          <li>
+            <span data-en>Routes and diversions exist only when sourced from official notices.</span>
+            <span data-hi>मार्ग और डायवर्जन केवल आधिकारिक सूचनाओं के स्रोत होने पर ही दिखते हैं।</span>
+          </li>
+          <li>
+            <span data-en>Emergency — dial 112. Disorder reports go to police, not this site.</span>
+            <span data-hi>आपातकाल — ११२। अव्यवस्था की रिपोर्ट पुलिस को दें, इस साइट पर नहीं।</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="hub-foot">
+      <p>
+        <a href="/narmada">
+          <span data-en>Narmada Hub</span>
+          <span data-hi>नर्मदा हब</span>
+        </a>
+        {" · "}
+        <a href="/">
+          <span data-en>Home</span>
+          <span data-hi>होम</span>
+        </a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>

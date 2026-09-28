@@ -1,0 +1,38 @@
+# Draft — re-verify aarti/darshan times by hand from the district online-darshan list / samiti before publishing.
+id: city-bengali-club-durga
+slug: city-bengali-club-durga
+year: 2026
+festival: durga
+name:
+  en: City Bengali Club, Civic Center
+  hi: सिटी बंगाली क्लब, सिविक सेंटर
+samiti: City Bengali Club
+coords: [79.9335, 23.1665]
+area: Civic Center
+highlights:
+  en: One of Jabalpur’s best-known Bengali Durga Pujas at Civic Center — listed on the district online-darshan seed list (editor must re-read the official page each year).
+  hi: सिविक सेंटर पर जबलपुर की प्रसिद्ध बंगाली दुर्गा पूजाओं में से एक — ज़िला ऑनलाइन-दर्शन सूची में (संपादक को प्रत्येक वर्ष आधिकारिक पृष्ठ दोबारा पढ़ना होगा)।
+schedule:
+  aarti:
+    - "08:30"
+    - "20:00"
+  darshan_hours: "Confirm daily hours locally / with the samiti — draft times from older district listing"
+crowd_tip:
+  en: Evenings after about 9 pm are typically busier (editorial guidance, not live crowd data).
+  hi: लगभग रात ९ बजे के बाद शाम आमतौर पर अधिक व्यस्त होती है (संपादकीय मार्गदर्शन, लाइव भीड़ डेटा नहीं)।
+access_note:
+  en: Civic Center area; expect festival-evening congestion. Prefer shared drop points and walk the last stretch when lanes are announced.
+  hi: सिविक सेंटर क्षेत्र; त्योहारी शाम भीड़ की उम्मीद करें। जब लेन घोषित हों तो साझा ड्रॉप पॉइंट और पैदल अंतिम दूरी बेहतर।
+family_notes:
+  en: Fix a family meeting point before entering crowds. Keep elders and children inland of traffic lanes.
+  hi: भीड़ में प्रवेश से पहले पारिवारिक मिलन बिंदु तय करें। बुज़ुर्गों और बच्चों को यातायात लेन के अंदर रखें।
+safety:
+  en: Stay on pedestrian paths when announced. Do not stand in the roadway for photos. Keep valuables secure. Emergency — 112.
+  hi: घोषित पैदल मार्गों पर रहें। फोटो के लिए सड़क पर न खड़े हों। सामान सुरक्षित रखें। आपातकाल — ११२।
+sources:
+  - type: editorial
+    url: ""
+    accessed: 2026-09-28
+    published_at: 2026-09-28
+status: draft
+verified_at: null

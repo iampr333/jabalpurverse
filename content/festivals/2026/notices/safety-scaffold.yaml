@@ -1,0 +1,19 @@
+# Scaffold notice — replace with a real police/Nagar Nigam advisory when issued. Must keep source + valid_to.
+id: utsav-2026-safety-scaffold
+slug: utsav-2026-safety-scaffold
+year: 2026
+title:
+  en: Festival safety reminder (scaffold)
+  hi: त्योहारी सुरक्षा अनुस्मारक (स्caffold)
+body:
+  en: This placeholder will be replaced by dated official diversions and parking bans when police or Nagar Nigam publish them. Until then, treat only announced notices as real — call 112 for emergencies.
+  hi: पुलिस या नगर निगम के प्रकाशन पर यह स्थान दिनांकित आधिकारिक डायवर्जन और पार्किंग प्रतिबंधों से बदला जाएगा। तब तक केवल घोषित सूचनाओं को ही वास्तविक मानें — आपातकाल में ११२।
+kind: safety
+source:
+  type: editorial
+  url: ""
+  accessed: 2026-09-28
+  published_at: 2026-09-28
+valid_from: "2026-10-01T00:00:00+05:30"
+valid_to: "2026-10-21T23:59:00+05:30"
+status: draft
