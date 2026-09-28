@@ -26,7 +26,7 @@
   display: block;
   transform: scale(1.06);
   animation: hero-kenburns 22s ease-in-out infinite alternate;
-  filter: saturate(0.9) brightness(0.58);
+  filter: saturate(0.94) brightness(0.92);
 }
 
 .hero-bleed__veil {
@@ -35,10 +35,9 @@
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, #0a4f51 62%, transparent) 0%,
-      color-mix(in srgb, #0a4f51 32%, transparent) 34%,
-      color-mix(in srgb, #0a4f51 40%, transparent) 62%,
-      color-mix(in srgb, #0a4f51 55%, transparent) 100%
+      color-mix(in srgb, #0a4f51 35%, transparent) 0%,
+      color-mix(in srgb, #0a4f51 12%, transparent) 40%,
+      color-mix(in srgb, #0a4f51 22%, transparent) 100%
     );
   pointer-events: none;
 }
