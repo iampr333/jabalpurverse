@@ -44,25 +44,22 @@
   pointer-events: none;
 }
 
-/* Soft river wash at the bottom — solid river floor so photos never meet edge-to-edge. */
+/* Soft river wash at the bottom — short so photos stay dominant. */
 .hero-bleed::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 40vh;
+  height: 18vh;
   z-index: 3;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(10, 79, 81, 0.03) 18%,
-    rgba(10, 79, 81, 0.12) 32%,
-    rgba(10, 79, 81, 0.28) 48%,
-    rgba(10, 79, 81, 0.5) 62%,
-    rgba(10, 79, 81, 0.72) 76%,
-    rgba(10, 79, 81, 0.9) 88%,
+    rgba(10, 79, 81, 0.08) 28%,
+    rgba(10, 79, 81, 0.35) 55%,
+    rgba(10, 79, 81, 0.75) 82%,
     #0a4f51 100%
   );
 }
@@ -195,7 +192,7 @@
 
 .hero-bleed__copy {
   margin-top: auto;
-  padding-bottom: clamp(4.5rem, 18vh, 8rem);
+  padding-bottom: clamp(2.75rem, 10vh, 5rem);
   max-width: 36rem;
   position: relative;
   z-index: 4;

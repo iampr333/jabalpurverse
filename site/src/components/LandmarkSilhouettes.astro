@@ -88,8 +88,8 @@ const landmarks = [
 
   /* Solid river corridor between hero and first photo — no edge-to-edge cut. */
   .chapters__join {
-    height: 10vh;
-    min-height: 4.5rem;
+    height: 4vh;
+    min-height: 1.5rem;
     background: #0a4f51;
   }
 
@@ -103,26 +103,22 @@ const landmarks = [
     margin-top: 0;
   }
 
-  /* Soft entry from river tone — many stops so there is no hard band edge. */
+  /* Soft entry from river tone — short so photos stay dominant. */
   .chapter::before {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    height: 48vh;
+    height: 18vh;
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(
       180deg,
       #0a4f51 0%,
-      rgba(10, 79, 81, 0.95) 6%,
-      rgba(10, 79, 81, 0.82) 14%,
-      rgba(10, 79, 81, 0.62) 24%,
-      rgba(10, 79, 81, 0.4) 36%,
-      rgba(10, 79, 81, 0.22) 50%,
-      rgba(10, 79, 81, 0.1) 64%,
-      rgba(10, 79, 81, 0.03) 80%,
+      rgba(10, 79, 81, 0.8) 22%,
+      rgba(10, 79, 81, 0.4) 48%,
+      rgba(10, 79, 81, 0.12) 75%,
       transparent 100%
     );
   }
@@ -133,19 +129,15 @@ const landmarks = [
     left: 0;
     right: 0;
     bottom: 0;
-    height: 48vh;
+    height: 18vh;
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(10, 79, 81, 0.03) 20%,
-      rgba(10, 79, 81, 0.1) 36%,
-      rgba(10, 79, 81, 0.22) 50%,
-      rgba(10, 79, 81, 0.4) 64%,
-      rgba(10, 79, 81, 0.62) 76%,
-      rgba(10, 79, 81, 0.82) 86%,
-      rgba(10, 79, 81, 0.95) 94%,
+      rgba(10, 79, 81, 0.12) 25%,
+      rgba(10, 79, 81, 0.4) 52%,
+      rgba(10, 79, 81, 0.8) 78%,
       #0a4f51 100%
     );
   }
@@ -175,7 +167,7 @@ const landmarks = [
   .chapter__copy {
     position: relative;
     z-index: 3;
-    padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(3.5rem, 12vh, 6rem);
+    padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(2.75rem, 10vh, 4.5rem);
     max-width: 40rem;
     color: #f7f5f1;
     text-shadow: 0 1px 18px color-mix(in srgb, #0a4f51 55%, transparent);
