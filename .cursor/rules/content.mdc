@@ -1,0 +1,40 @@
+---
+description: Editorial Git content schema and validation rules
+globs: content/**/*.{yaml,yml,md}
+alwaysApply: false
+---
+
+# Content (Git is source of truth)
+
+## Status
+
+- Use `status: draft` until every factual field has a **source** and **checked/verified date** (R7).
+- Never invent fares, aarti times, or routes as `published`.
+
+## Published tourism / heritage / food
+
+Must include:
+
+- `sources[]` (type + url + accessed)
+- `verified_at`
+- `timings` with `checked_at`
+- `entry` with `checked_at`
+- ≥ 1 `access.legs` entry; each option has `checked_at`
+
+## Ghats
+
+- `river_safety` required when `river: narmada` or ghat category.
+- Aarti ghats need `aarti.checked_at`.
+
+## Images and coords
+
+- Every image: `alt`, `credit`, `license`, `source_url`.
+- Coords are **`[lng, lat]`** inside the Jabalpur day-trip bbox (validator enforces).
+
+## Before merge
+
+```bash
+npm run validate
+```
+
+Build must fail on missing source/licence/alt, bad coords, duplicate slug, or incomplete published access.

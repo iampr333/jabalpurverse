@@ -1,0 +1,43 @@
+---
+description: Supabase Postgres RLS, RPCs, and security defaults
+globs: supabase/**/*.sql
+alwaysApply: false
+---
+
+# Backend (Supabase)
+
+## RLS
+
+- **Enable RLS on every table** in an exposed schema. Default deny (no policy ⇒ no access).
+- Anon **cannot write**. Authenticated users write **own rows only** unless a BRD role allows more.
+- Prefer `(select auth.uid())` over bare `auth.uid()` in policies (planner-friendly).
+
+```sql
+-- ❌ BAD — exposed table without RLS
+create table public.tips (...);
+
+-- ✅ GOOD
+alter table public.tips enable row level security;
+-- then explicit policies; no policy = deny
+```
+
+## Functions
+
+- Default **`SECURITY INVOKER`**.
+- Use **`SECURITY DEFINER`** only when required (privilege, avoid RLS recursion). Always:
+
+```sql
+security definer
+set search_path = ''
+-- fully qualify: public.profiles, auth.uid(), etc.
+```
+
+- DEFINER in an API-exposed schema must check `auth.uid()` / role and **revoke EXECUTE from `anon`** unless intentional.
+- Role is `profiles.role` on the server. Never trust role from the client body.
+
+## Data rules
+
+- Do **not** store check-in GPS coordinates (verify then discard).
+- Client uses **anon/publishable** key only. Service role stays in CI/secrets.
+- Feature kill-switches live in `public.config`. Prefer flags over hard deletes of features.
+- Stay inside the BRD data model (§7.2) unless the current phase needs a new table.

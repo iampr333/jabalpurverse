@@ -1,0 +1,33 @@
+---
+description: TypeScript strictness and boundary parsing for the monorepo
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript
+
+## Strict
+
+- Keep `strict` TypeScript. Prefer explicit types at public function boundaries.
+- **No `any`.** Use `unknown` and narrow, or a Zod schema.
+- No empty `catch`. Log or rethrow with context.
+- Avoid `!` non-null assertions unless a one-line comment proves the invariant.
+
+## Boundaries
+
+```ts
+// ❌ BAD — trust raw YAML
+const place = yaml.parse(raw) as Place;
+
+// ✅ GOOD
+const place = placeSchema.parse(yaml.parse(raw));
+```
+
+- Parse content YAML / external JSON with **Zod** (see `scripts/src/schema/place.ts`).
+- Prefer `z.infer<typeof schema>` over hand-duplicated interfaces.
+- Do not silence `astro check` / `tsc` errors with `@ts-ignore` unless temporary and commented with a ticket/reason.
+
+## Imports
+
+- Prefer named exports for components and schemas.
+- Keep Preact imports from `preact` / `preact/hooks` (not `react`).

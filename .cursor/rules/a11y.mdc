@@ -1,0 +1,37 @@
+---
+description: WCAG 2.2 AA accessibility for Astro/Preact UI
+globs: site/**/*.{astro,tsx,css}
+alwaysApply: false
+---
+
+# Accessibility (WCAG 2.2 AA)
+
+## Must
+
+- Text contrast ≥ **4.5:1** (large text ≥ 3:1). Non-text UI (icons, focus) ≥ **3:1**.
+- Visible **`:focus-visible`** outline ≥ 2px with ≥ 3:1 contrast vs unfocused state. Never `outline: none` without a replacement.
+- Pointer targets ≥ **24×24 CSS px** (or sufficient spacing). Prefer ≥ 44px on primary mobile actions.
+- Buttons and links have real accessible names (not icon-only without `aria-label`).
+- Forms: visible labels (`<label for>` or wrapping). Errors are text, not color-only.
+- Keyboard: full Tab path; no keyboard traps. Drag/reorder has a non-drag alternative.
+- Map: always ship a **list view** of the same places (BRD §10.4).
+- Images: meaningful `alt`; decorative images `alt=""`.
+
+## Motion
+
+```css
+/* tokens.css already disables animation under reduced motion — keep it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+```
+
+Do not add river-ripple or scroll animations that ignore `prefers-reduced-motion`.
+
+## Language
+
+- Set `document.documentElement.lang` to `hi` or `en` when the language toggle changes.
+- Devanagari names sit beside English where place names appear.

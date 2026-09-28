@@ -1,0 +1,36 @@
+---
+description: Jabalpurverse product constraints, brand, secrets, and deploy — always on
+alwaysApply: true
+---
+
+# Product (always)
+
+- **Jabalpur-only** city platform. No multi-city generic template.
+- **Bilingual HI/EN** from day one. Greeting **"नर्मदे हर / Narmade Har"** with an on/off toggle; never use the greeting on accident, disorder, or bereavement copy.
+- Brand colors only from `site/src/styles/tokens.css`: marble-white, river-teal, diya-saffron (+ ink/muted).
+
+## Cost and vendors (R1–R2)
+
+- ₹0 recurring infra. **No credit card** on any service.
+- Allowed: Cloudflare Pages/Workers/R2, Supabase free, MapLibre + OpenFreeMap, UPI deep links.
+- Forbidden: Google Maps Platform API, Vercel Hobby, paid LLMs as source of truth, SMS OTP, Apple sign-in, scraping social platforms.
+
+## Secrets and accounts
+
+- Never commit `.env`, `.env.*`, `.env.example`, `*.pem`, `*.key`, `service_role`, or API tokens.
+- Supabase project for this app: **`dsjmjxrnqedypuolguow` only**. Never migrate against the CRM project.
+- This folder’s git identity stays **`iampr333`**.
+
+## Deploy
+
+```bash
+npm run build
+npx wrangler deploy -c site/wrangler.jsonc
+# or: npm run pages:deploy
+```
+
+Never run bare `npx wrangler deploy` from the monorepo root (workspace error).
+
+## Scope
+
+Ship by BRD phase. Do not start AI, AR, native apps, star ratings, or business portals in P0–P1.

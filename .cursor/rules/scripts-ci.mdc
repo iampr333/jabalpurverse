@@ -1,0 +1,32 @@
+---
+description: Content validator scripts and GitHub Actions CI conventions
+globs: "{scripts/**/*.ts,.github/**/*.{yml,yaml}}"
+alwaysApply: false
+---
+
+# Scripts and CI
+
+## Validator (`scripts/`)
+
+- `npm run validate` must **fail the build** when:
+  - published place missing sources / `verified_at`
+  - missing image alt, credit, or licence
+  - coords outside Jabalpur day-trip bbox
+  - duplicate slug
+  - published tourism/heritage/food missing `timings`, `entry`, or `access.legs`
+
+- Keep schemas in `scripts/src/schema/`. Do not weaken published rules to make drafts pass — use `status: draft`.
+
+## GitHub Actions
+
+- Pipeline: **validate → `astro check` → build**.
+- Never put secrets, anon keys, or service roles in workflow YAML. Use GitHub Secrets / env at runtime.
+- Public repo only for free Actions. Do not add paid CI or services that need a card.
+
+## Local commands
+
+```bash
+npm run validate
+npm run check
+npm run build
+```
