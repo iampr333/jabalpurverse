@@ -15,11 +15,13 @@ Create a **local-only** `.env` (gitignored). Do **not** commit `.env`, `.env.exa
 ```bash
 PUBLIC_SUPABASE_URL=https://dsjmjxrnqedypuolguow.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=<from Supabase Settings → API>
-CLOUDFLARE_ACCOUNT_ID=<from Cloudflare dashboard>
+CLOUDFLARE_ACCOUNT_ID=<from Cloudflare dashboard / wrangler whoami>
 # CLOUDFLARE_API_TOKEN=<optional, for CI/deploy>
 ```
 
 Never commit `service_role`, API tokens, or any `.env*` file.
+
+Note: `npx wrangler whoami` shows the real Account ID for the logged-in Cloudflare account.
 
 ## Common commands
 
@@ -37,16 +39,28 @@ npx wrangler@latest login
 npx wrangler@latest whoami
 ```
 
-## Deploy (Pages)
+## Deploy (Pages / Workers Builds)
 
-1. Public GitHub repo under `iampr333`
-2. Cloudflare → Workers & Pages → Create → Connect repo → root build:
-   - Build command: `npm run build`
-   - Output directory: `site/dist` (confirm against Astro Cloudflare adapter output)
-3. Or set secrets and use Actions:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
-   - `PUBLIC_SUPABASE_ANON_KEY`
+Repo is an npm **workspace**. Do **not** run bare `npx wrangler deploy` from the repo root.
+
+Cloudflare → jabalpurverse → Settings → Builds:
+
+| Setting | Value |
+|---|---|
+| Root directory | `/` (repo root) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy -c site/wrangler.jsonc` |
+| Output directory | leave blank / unused when using wrangler deploy |
+
+Then **Retry deployment**.
+
+Local dry-run:
+
+```bash
+npm run build
+npm run pages:deploy
+```
+
 
 ## Domain (later)
 

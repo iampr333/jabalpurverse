@@ -7,5 +7,9 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact()],
-  adapter: cloudflare()
+  adapter: cloudflare({
+    // P0 is static shell — skip Cloudflare Images transform binding
+    imageService: 'passthrough',
+  }),
+  output: 'static',
 });

@@ -12,7 +12,8 @@
     "build": "npm run validate && npm run build -w site",
     "check": "npm run check -w site",
     "validate": "npm run validate -w scripts",
-    "preview": "npm run preview -w site"
+    "preview": "npm run preview -w site",
+    "pages:deploy": "npx wrangler deploy -c site/wrangler.jsonc"
   },
   "engines": {
     "node": ">=20"

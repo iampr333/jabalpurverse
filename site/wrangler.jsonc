@@ -2,11 +2,10 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"compatibility_date": "2026-09-26",
 	"compatibility_flags": ["global_fetch_strictly_public"],
-	"name": "site",
-	"main": "@astrojs/cloudflare/entrypoints/server",
+	"name": "jabalpurverse",
 	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
+		"directory": "./dist/client",
+		"not_found_handling": "404-page"
 	},
 	"observability": {
 		"enabled": true
