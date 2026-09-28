@@ -1,0 +1,240 @@
+/* Immersive full-bleed home hero — used by ShellChrome */
+
+.hero-bleed {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: clip;
+  color: #f7f5f1;
+  isolation: isolate;
+  z-index: 0;
+  /* Extra bottom so the next chapter can slide under while the photo still reads. */
+  padding-bottom: 0;
+}
+
+.hero-bleed__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bleed__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transform: scale(1.08);
+  animation: hero-kenburns 22s ease-in-out infinite alternate;
+  filter: saturate(0.94) brightness(0.88);
+}
+
+.hero-bleed__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, #0a4f51 48%, transparent) 0%,
+      color-mix(in srgb, #0a4f51 14%, transparent) 36%,
+      color-mix(in srgb, #0a4f51 22%, transparent) 62%,
+      color-mix(in srgb, #0a4f51 38%, transparent) 88%,
+      color-mix(in srgb, #0a4f51 28%, transparent) 100%
+    );
+  pointer-events: none;
+}
+
+.hero-bleed__current {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero-bleed__flow--a {
+  animation: hero-drift 40s linear infinite;
+}
+
+.hero-bleed__flow--b {
+  animation: hero-drift 52s linear infinite reverse;
+}
+
+.hero-bleed__dawn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--diya), transparent);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.hero-bleed__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 1.15rem clamp(1.15rem, 4vw, 2rem) 2.5rem;
+}
+
+.hero-bleed__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .hero-bleed__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .hero-bleed__nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.85rem 1.25rem;
+  }
+
+  .hero-bleed__link,
+  .hero-bleed__support {
+    font-size: 0.9rem;
+  }
+}
+
+.hero-bleed__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #f7f5f1;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.hero-bleed__mark {
+  display: inline-flex;
+  color: color-mix(in srgb, #f7f5f1 85%, var(--diya));
+}
+
+.hero-bleed__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1.15rem;
+}
+
+.hero-bleed__link {
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, #f7f5f1 82%, transparent);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-underline-offset: 3px;
+}
+
+.hero-bleed__link:hover,
+.hero-bleed__link:focus-visible {
+  color: #f7f5f1;
+  text-decoration: underline;
+}
+
+.hero-bleed__support {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--diya-soft);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.hero-bleed__support:hover,
+.hero-bleed__support:focus-visible {
+  color: #f7f5f1;
+  text-decoration: underline;
+}
+
+.hero-bleed__copy {
+  margin-top: auto;
+  padding-bottom: clamp(2rem, 8vh, 4.5rem);
+  max-width: 36rem;
+}
+
+.hero-bleed__greeting {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  color: color-mix(in srgb, #d5ecec 90%, white);
+}
+
+.hero-bleed__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #f7f5f1;
+}
+
+.hero-bleed__tagline {
+  margin: 0 0 0.75rem;
+  max-width: 28rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.45;
+  color: color-mix(in srgb, #f7f5f1 78%, transparent);
+}
+
+.hero-bleed__place {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, #d5ecec 88%, white);
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-140px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bleed__photo {
+    transform: none;
+    animation: none;
+  }
+
+  .hero-bleed__flow--a,
+  .hero-bleed__flow--b {
+    animation: none !important;
+  }
+}

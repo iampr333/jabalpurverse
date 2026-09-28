@@ -1,5 +1,6 @@
 :root {
-  /* Brand — marble-white, river-teal, diya-saffron (§6.22.2) */
+  /* Brand — marble-white, river-teal, diya-saffron (§6.22.2)
+     Always light: auto dark mode made the P0 shell feel gloomy. */
   --marble: #f7f5f1;
   --marble-deep: #ebe6dc;
   --river: #0f6b6d;
@@ -27,17 +28,6 @@
   --max: 72rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface: #0f1616;
-    --text: #eef3f1;
-    --muted: #9aa8a4;
-    --marble-deep: #1a2424;
-    --river-soft: #143636;
-    --diya-soft: #3a2418;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -54,7 +44,7 @@
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 body {

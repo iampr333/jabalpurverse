@@ -5,10 +5,15 @@ import RiverBackdrop from "../components/RiverBackdrop.astro";
 interface Props {
   title?: string;
   description?: string;
+  /** Pale marble river wash — for Support and light pages, not photo-led home. */
+  river?: boolean;
 }
 
-const { title = "Jabalpurverse", description = "Explore Jabalpur. Discover its stories." } =
-  Astro.props;
+const {
+  title = "Jabalpurverse",
+  description = "Explore Jabalpur. Discover its stories.",
+  river = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -29,7 +34,7 @@ const { title = "Jabalpurverse", description = "Explore Jabalpur. Discover its s
     <title>{title}</title>
   </head>
   <body class="relative min-h-dvh">
-    <RiverBackdrop />
+    {river && <RiverBackdrop />}
     <div class="relative z-10">
       <slot />
     </div>

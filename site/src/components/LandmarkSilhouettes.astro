@@ -1,17 +1,18 @@
 ---
 /**
- * Decorative bilingual landmark strip — original SVG silhouettes + Commons photos.
- * Not place pages; no unverified facts.
+ * Stacked full-bleed place chapters after the Narmada hero.
+ * Order: Dhuandhar → Madan Mahal → Marble Rocks. Soft top fades + overlap.
  */
 const landmarks = [
   {
-    id: "bhedaghat",
-    nameHi: "भेड़ाघाट",
-    nameEn: "Bhedaghat",
-    hintHi: "संगमरमर की चट्टानें",
-    hintEn: "Marble Rocks",
-    image: "/images/atmosphere/marble-rocks-bhedaghat.jpg",
-    imageAlt: "Marble Rocks gorge on the Narmada at Bhedaghat",
+    id: "dhuandhar",
+    nameHi: "धुआँधार",
+    nameEn: "Dhuandhar",
+    hintHi: "नर्मदा जलप्रपात",
+    hintEn: "Narmada falls",
+    image: "/images/atmosphere/dhuandhar-falls.jpg",
+    imageAlt: "Dhuandhar Falls on the Narmada near Bhedaghat",
+    position: "center 40%",
   },
   {
     id: "madan-mahal",
@@ -21,180 +22,185 @@ const landmarks = [
     hintEn: "Hill fort",
     image: "/images/atmosphere/madan-mahal-fort.jpg",
     imageAlt: "Madan Mahal fort on the hill overlooking Jabalpur",
+    position: "center 72%",
   },
   {
-    id: "gwarighat",
-    nameHi: "ग्वारीघाट",
-    nameEn: "Gwarighat",
-    hintHi: "नर्मदा आरती",
-    hintEn: "Narmada aarti",
-    image: "/images/atmosphere/gwarighat-sunrise.jpg",
-    imageAlt: "Sunrise at Gwarighat on the Narmada",
+    id: "marble-rocks",
+    nameHi: "संगमरमर चट्टानें",
+    nameEn: "Marble Rocks",
+    hintHi: "भेड़ाघाट",
+    hintEn: "Bhedaghat",
+    image: "/images/atmosphere/marble-rocks-bhedaghat.jpg",
+    imageAlt: "Marble Rocks gorge on the Narmada at Bhedaghat",
+    position: "center 55%",
   },
 ] as const;
 ---
 
-<section class="landmarks" aria-label="Jabalpur places">
-  <ul class="landmarks__list">
-    {
-      landmarks.map((place) => (
-        <li class="landmarks__item">
-          <figure class="landmarks__card">
-            <div class="landmarks__media">
-              <img
-                src={place.image}
-                alt={place.imageAlt}
-                width="640"
-                height="400"
-                loading="lazy"
-                decoding="async"
-              />
-              <svg class="landmarks__silhouette" viewBox="0 0 120 48" aria-hidden="true">
-                {place.id === "bhedaghat" && (
-                  <path
-                    fill="currentColor"
-                    d="M0 48 V28 L12 22 L22 30 L34 14 L46 28 L58 10 L70 26 L82 16 L94 30 L106 18 L120 28 V48 Z"
-                  />
-                )}
-                {place.id === "madan-mahal" && (
-                  <path
-                    fill="currentColor"
-                    d="M0 48 V36 L28 36 L36 20 L44 12 L52 20 L58 8 L64 20 L72 14 L80 24 L88 36 L120 36 V48 Z"
-                  />
-                )}
-                {place.id === "gwarighat" && (
-                  <>
-                    <path
-                      fill="currentColor"
-                      d="M0 48 V34 H18 V28 H28 V34 H42 V26 H52 V34 H68 V30 H80 V34 H120 V48 Z"
-                    />
-                    <circle cx="96" cy="18" r="4" fill="currentColor" opacity="0.7" />
-                  </>
-                )}
-              </svg>
-            </div>
-            <figcaption class="landmarks__caption">
-              <span class="landmarks__name" lang="hi">
-                {place.nameHi}
-              </span>
-              <span class="landmarks__sep"> · </span>
-              <span class="landmarks__name">{place.nameEn}</span>
-              <span class="landmarks__hint">
-                <span lang="hi">{place.hintHi}</span>
-                <span aria-hidden="true"> · </span>
-                <span>{place.hintEn}</span>
-              </span>
-            </figcaption>
-          </figure>
-        </li>
-      ))
-    }
-  </ul>
-  <p class="landmarks__credit">
+<div class="chapters" aria-label="Jabalpur places along the Narmada">
+  {
+    landmarks.map((place, index) => (
+      <section class:list={["chapter", index === 0 && "chapter--first"]} id={place.id}>
+        <img
+          class="chapter__photo"
+          src={place.image}
+          alt={place.imageAlt}
+          width="1600"
+          height="1067"
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          style={`object-position: ${place.position}`}
+        />
+        <div class="chapter__veil" aria-hidden="true" />
+        <div class="chapter__copy">
+          <h2 class="chapter__name">
+            <span lang="hi">{place.nameHi}</span>
+            <span class="chapter__sep" aria-hidden="true">
+              ·
+            </span>
+            <span>{place.nameEn}</span>
+          </h2>
+          <p class="chapter__hint">
+            <span lang="hi">{place.hintHi}</span>
+            <span aria-hidden="true"> · </span>
+            <span>{place.hintEn}</span>
+          </p>
+        </div>
+      </section>
+    ))
+  }
+  <p class="chapters__credit">
     Photos: Wikimedia Commons (CC BY-SA) ·
     <a href="/images/credits/ATTRIBUTION.md">Attribution</a>
   </p>
-</section>
+</div>
 
 <style>
-  .landmarks {
-    margin-top: clamp(2rem, 6vw, 3.5rem);
-    max-width: 56rem;
-  }
-
-  .landmarks__list {
-    list-style: none;
+  .chapters {
+    width: 100%;
     margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 720px) {
-    .landmarks__list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .landmarks__card {
-    margin: 0;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    background: color-mix(in srgb, var(--marble) 78%, transparent);
-    border: 1px solid color-mix(in srgb, var(--river) 18%, transparent);
-    backdrop-filter: blur(8px);
-  }
-
-  .landmarks__media {
+    background: transparent;
     position: relative;
-    aspect-ratio: 8 / 5;
-    overflow: hidden;
-    background: var(--river-soft);
+    z-index: 2;
   }
 
-  .landmarks__media img {
+  .chapter {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    /* Pull under the previous section; long soft TOP fade so photos crossfade. */
+    margin-top: -16vh;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+  }
+
+  .chapter--first {
+    margin-top: -22vh;
+  }
+
+  .chapter__photo {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(0.9);
+    filter: saturate(0.94) brightness(0.88);
   }
 
-  .landmarks__silhouette {
+  .chapter__veil {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 32%;
-    color: color-mix(in srgb, var(--river-deep) 55%, transparent);
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, #0a4f51 35%, transparent) 0%,
+        transparent 24%,
+        transparent 55%,
+        color-mix(in srgb, #0a4f51 30%, transparent) 82%,
+        color-mix(in srgb, #0a4f51 52%, transparent) 100%
+      );
     pointer-events: none;
   }
 
-  .landmarks__caption {
-    padding: 0.75rem 0.9rem 0.95rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.15rem 0;
+  .chapter__copy {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(3rem, 10vh, 5rem);
+    max-width: 40rem;
+    color: #f7f5f1;
+    text-shadow: 0 1px 18px color-mix(in srgb, #0a4f51 55%, transparent);
+    opacity: 0;
+    transform: translateY(1.25rem);
+    animation: chapter-in 0.9s ease forwards;
+    animation-timeline: view();
+    animation-range: entry 15% cover 40%;
   }
 
-  .landmarks__name {
+  @supports not (animation-timeline: view()) {
+    .chapter__copy {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  .chapter__name {
+    margin: 0 0 0.35rem;
     font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: var(--river-deep);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
 
-  .landmarks__sep {
-    color: var(--muted);
+  .chapter__sep {
+    margin-inline: 0.35rem;
+    opacity: 0.7;
+    font-weight: 500;
   }
 
-  .landmarks__hint {
-    flex-basis: 100%;
-    margin-top: 0.2rem;
-    font-size: 0.85rem;
-    color: var(--muted);
+  .chapter__hint {
+    margin: 0;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    opacity: 0.9;
   }
 
-  .landmarks__credit {
-    margin: 0.85rem 0 0;
-    font-size: 0.75rem;
-    color: var(--muted);
+  .chapters__credit {
+    margin: -2vh 0 0;
+    padding: 2.5rem 1.25rem 1.25rem;
+    font-size: 0.72rem;
+    color: color-mix(in srgb, #f7f5f1 60%, transparent);
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      color-mix(in srgb, #0a4f51 75%, #1a1c1b) 45%,
+      #0a4f51 100%
+    );
+    position: relative;
+    z-index: 2;
   }
 
-  .landmarks__credit a {
-    color: var(--river);
+  .chapters__credit a {
+    color: #d5ecec;
     text-underline-offset: 2px;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .landmarks__card {
-      background: color-mix(in srgb, #0f1616 70%, transparent);
-      border-color: color-mix(in srgb, var(--river-soft) 25%, transparent);
+  @keyframes chapter-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .landmarks__name {
-      color: color-mix(in srgb, var(--river-soft) 80%, white);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chapter__copy {
+      opacity: 1;
+      transform: none;
+      animation: none;
     }
   }
 </style>

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./hero.css";
+@import "lenis/dist/lenis.css";
+
+/* Photo-led home sits on river-deep so chapter seams never flash marble. */
+html:has(.hero-bleed) body {
+  background: #0a4f51;
+  color: #f7f5f1;
+}
 
 @theme {
   --color-marble: var(--marble);
