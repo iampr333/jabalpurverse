@@ -91,14 +91,16 @@ const landmarks = [
     overflow: hidden;
     display: flex;
     align-items: flex-end;
-    /* Pull under the previous section; long soft TOP fade so photos crossfade. */
-    margin-top: -16vh;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+    margin-top: -12vh;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
   }
 
+  /* First chapter starts after the hero so Narmada owns the full first viewport. */
   .chapter--first {
-    margin-top: -22vh;
+    margin-top: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .chapter__photo {

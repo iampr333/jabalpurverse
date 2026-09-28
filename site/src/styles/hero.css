@@ -2,14 +2,13 @@
 
 .hero-bleed {
   position: relative;
+  height: 100dvh;
   min-height: 100dvh;
   width: 100%;
-  overflow-x: clip;
+  overflow: hidden;
   color: #f7f5f1;
   isolation: isolate;
   z-index: 0;
-  /* Extra bottom so the next chapter can slide under while the photo still reads. */
-  padding-bottom: 0;
 }
 
 .hero-bleed__media {
@@ -25,9 +24,9 @@
   object-fit: cover;
   object-position: center 55%;
   display: block;
-  transform: scale(1.08);
+  transform: scale(1.06);
   animation: hero-kenburns 22s ease-in-out infinite alternate;
-  filter: saturate(0.94) brightness(0.88);
+  filter: saturate(0.9) brightness(0.58);
 }
 
 .hero-bleed__veil {
@@ -36,11 +35,10 @@
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, #0a4f51 48%, transparent) 0%,
-      color-mix(in srgb, #0a4f51 14%, transparent) 36%,
-      color-mix(in srgb, #0a4f51 22%, transparent) 62%,
-      color-mix(in srgb, #0a4f51 38%, transparent) 88%,
-      color-mix(in srgb, #0a4f51 28%, transparent) 100%
+      color-mix(in srgb, #0a4f51 62%, transparent) 0%,
+      color-mix(in srgb, #0a4f51 32%, transparent) 34%,
+      color-mix(in srgb, #0a4f51 40%, transparent) 62%,
+      color-mix(in srgb, #0a4f51 55%, transparent) 100%
     );
   pointer-events: none;
 }
