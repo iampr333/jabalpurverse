@@ -15,7 +15,7 @@ Near-zero-cost city platform for Jabalpur (PWA). See [Docs/JABALPURVERSE_BRD_Fin
 ## Quick start
 
 ```bash
-cp .env.example .env   # fill anon key
+# Create local .env only (never commit .env / .env.example) — see Docs/RUNBOOK.md
 npm install
 npm run validate
 npm run dev

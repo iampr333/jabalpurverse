@@ -2,11 +2,16 @@
 node_modules/
 .pnpm-store/
 
-# Env / secrets
+# Env / secrets — never commit any of these
 .env
+.env.*
 .env.local
 .env.*.local
-!.env.example
+.env.example
+*.pem
+*.key
+credentials.json
+secrets/
 
 # Build
 site/dist/

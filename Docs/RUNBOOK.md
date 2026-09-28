@@ -10,15 +10,16 @@
 
 ## Local env
 
-Copy `.env.example` → `.env` (gitignored).
+Create a **local-only** `.env` (gitignored). Do **not** commit `.env`, `.env.example`, tokens, or keys.
 
 ```bash
 PUBLIC_SUPABASE_URL=https://dsjmjxrnqedypuolguow.supabase.co
-PUBLIC_SUPABASE_ANON_KEY=...
-CLOUDFLARE_ACCOUNT_ID=dc36b39cb4ed4dd1a10b8f24689a72ba
+PUBLIC_SUPABASE_ANON_KEY=<from Supabase Settings → API>
+CLOUDFLARE_ACCOUNT_ID=<from Cloudflare dashboard>
+# CLOUDFLARE_API_TOKEN=<optional, for CI/deploy>
 ```
 
-Never commit `service_role` or `.env`.
+Never commit `service_role`, API tokens, or any `.env*` file.
 
 ## Common commands
 
