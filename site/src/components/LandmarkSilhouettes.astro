@@ -87,7 +87,8 @@ const landmarks = [
   .chapters {
     width: 100%;
     margin: 0;
-    background: #0a4f51;
+    /* No solid teal between photos — only credit/footer use river wash. */
+    background: transparent;
     position: relative;
     z-index: 1;
   }
@@ -107,6 +108,46 @@ const landmarks = [
     display: flex;
     align-items: flex-end;
     margin-top: 0;
+    z-index: 1;
+  }
+
+  /* Stacking: earlier place stays above the next so its bottom fade reveals it. */
+  .chapter--first {
+    z-index: 3;
+  }
+
+  .chapter:not(.chapter--first):not(.chapter--last) {
+    z-index: 2;
+  }
+
+  .chapter--last {
+    z-index: 1;
+  }
+
+  /*
+   * Soft photo→photo dissolve: fade the bottom of each chapter (except last)
+   * so the next photo shows through — no teal band, no hard cut.
+   */
+  .chapter:not(.chapter--last) {
+    margin-bottom: -18vh;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 72%,
+      rgba(0, 0, 0, 0.65) 82%,
+      rgba(0, 0, 0, 0.25) 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 72%,
+      rgba(0, 0, 0, 0.65) 82%,
+      rgba(0, 0, 0, 0.25) 92%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
   }
 
   /* Soft entry only on the first place photo (after sunset hero). */
@@ -128,7 +169,7 @@ const landmarks = [
     );
   }
 
-  /* Soft exit only into the footer credit — not between place photos. */
+  /* Soft exit only into the footer credit. */
   .chapter--last::after {
     content: "";
     position: absolute;
@@ -156,17 +197,21 @@ const landmarks = [
     display: block;
   }
 
+  /* Readability under captions only — keep out of the photo dissolve zone. */
   .chapter__veil {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       180deg,
-      transparent 55%,
-      color-mix(in srgb, #0a4f51 18%, transparent) 82%,
-      color-mix(in srgb, #0a4f51 35%, transparent) 100%
+      transparent 70%,
+      rgba(10, 79, 81, 0.22) 100%
     );
     pointer-events: none;
     z-index: 1;
+  }
+
+  .chapter:not(.chapter--last) .chapter__veil {
+    display: none;
   }
 
   .chapter__copy {
@@ -181,6 +226,11 @@ const landmarks = [
     animation: chapter-in 0.9s ease forwards;
     animation-timeline: view();
     animation-range: entry 15% cover 40%;
+  }
+
+  /* Keep captions above the dissolve so the blend stays clean. */
+  .chapter:not(.chapter--last) .chapter__copy {
+    padding-bottom: clamp(5.5rem, 24vh, 10rem);
   }
 
   @supports not (animation-timeline: view()) {
