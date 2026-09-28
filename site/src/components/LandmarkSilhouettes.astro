@@ -91,12 +91,12 @@ const landmarks = [
     overflow: hidden;
     display: flex;
     align-items: flex-end;
+    /* Soft TOP fade between chapters only — do not invade the hero viewport. */
     margin-top: -12vh;
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
     mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
   }
 
-  /* First chapter starts after the hero so Narmada owns the full first viewport. */
   .chapter--first {
     margin-top: 0;
     -webkit-mask-image: none;
