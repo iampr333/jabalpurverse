@@ -36,13 +36,35 @@
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, #0a4f51 48%, transparent) 0%,
-      color-mix(in srgb, #0a4f51 14%, transparent) 36%,
-      color-mix(in srgb, #0a4f51 22%, transparent) 62%,
-      color-mix(in srgb, #0a4f51 38%, transparent) 88%,
-      color-mix(in srgb, #0a4f51 28%, transparent) 100%
+      color-mix(in srgb, #0a4f51 42%, transparent) 0%,
+      color-mix(in srgb, #0a4f51 12%, transparent) 34%,
+      color-mix(in srgb, #0a4f51 18%, transparent) 58%,
+      transparent 72%
     );
   pointer-events: none;
+}
+
+/* Soft river wash at the bottom — solid river floor so photos never meet edge-to-edge. */
+.hero-bleed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40vh;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(10, 79, 81, 0.03) 18%,
+    rgba(10, 79, 81, 0.12) 32%,
+    rgba(10, 79, 81, 0.28) 48%,
+    rgba(10, 79, 81, 0.5) 62%,
+    rgba(10, 79, 81, 0.72) 76%,
+    rgba(10, 79, 81, 0.9) 88%,
+    #0a4f51 100%
+  );
 }
 
 .hero-bleed__current {
@@ -173,8 +195,10 @@
 
 .hero-bleed__copy {
   margin-top: auto;
-  padding-bottom: clamp(2rem, 8vh, 4.5rem);
+  padding-bottom: clamp(4.5rem, 18vh, 8rem);
   max-width: 36rem;
+  position: relative;
+  z-index: 4;
 }
 
 .hero-bleed__greeting {
