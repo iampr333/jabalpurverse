@@ -27,7 +27,17 @@ const wa = whatsappShareUrl(shareText);
   description="Durga Puja pandals, visarjan kunds, and festival safety notices for Jabalpur — bilingual HI/EN."
 >
   <div class="hub hub--immersive hub--utsav">
-    <header class="ghat-hero ghat-hero--solid utsav-hero">
+    <header class="ghat-hero utsav-hero">
+      <img
+        class="ghat-hero__photo"
+        src="/images/atmosphere/utsav-durga-hero.jpg"
+        alt=""
+        width="1600"
+        height="900"
+        decoding="async"
+        fetchpriority="high"
+        style="object-position: center 35%"
+      />
       <div class="ghat-hero__veil" aria-hidden="true" />
       <div class="ghat-hero__top">
         <SiteNav client:load variant="hero" current="utsav" />
@@ -80,9 +90,21 @@ const wa = whatsappShareUrl(shareText);
       </div>
     </header>
 
-    <section class="ghat-care" aria-labelledby="pandal-heading">
-      <div class="ghat-care__frame">
-        <h2 id="pandal-heading" class="ghat-care__h2">
+    <section class="hub-chapter hub-chapter--story" aria-labelledby="pandal-heading">
+      <img
+        class="hub-chapter__photo"
+        src="/images/atmosphere/utsav-durga-chapter.jpg"
+        alt=""
+        width="1200"
+        height="1600"
+        loading="lazy"
+        decoding="async"
+        style="object-position: center 30%"
+      />
+      <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+      <div class="hub-chapter__frame">
+        <div class="hub-chapter__panel ghat-story utsav-dir-panel">
+        <h2 id="pandal-heading" class="hub-chapter__h2">
           <span data-en>Pandal directory</span>
           <span data-hi>पंडाल निर्देशिका</span>
         </h2>
@@ -142,12 +164,25 @@ const wa = whatsappShareUrl(shareText);
             </>
           )
         }
+        </div>
       </div>
     </section>
 
-    <section class="ghat-maps" aria-labelledby="visarjan-heading">
-      <div class="ghat-maps__frame">
-        <h2 id="visarjan-heading" class="ghat-maps__h2">
+    <section class="hub-chapter" aria-labelledby="visarjan-heading">
+      <img
+        class="hub-chapter__photo"
+        src="/images/atmosphere/utsav-durga-evening.jpg"
+        alt=""
+        width="1600"
+        height="1200"
+        loading="lazy"
+        decoding="async"
+        style="object-position: center 40%"
+      />
+      <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+      <div class="hub-chapter__frame">
+        <div class="hub-chapter__panel ghat-story">
+        <h2 id="visarjan-heading" class="hub-chapter__h2">
           <span data-en>Visarjan points</span>
           <span data-hi>विसर्जन स्थल</span>
         </h2>
@@ -190,6 +225,7 @@ const wa = whatsappShareUrl(shareText);
             ))
           }
         </ul>
+        </div>
       </div>
     </section>
 
@@ -256,6 +292,10 @@ const wa = whatsappShareUrl(shareText);
     </section>
 
     <footer class="hub-foot">
+      <p>
+        Photos: Wikimedia Commons (CC BY-SA / CC0) ·
+        <a href="/images/credits/ATTRIBUTION.md">Attribution</a>
+      </p>
       <p>
         <a href="/narmada">
           <span data-en>Narmada Hub</span>

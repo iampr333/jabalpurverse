@@ -146,3 +146,27 @@ Decorative atmosphere for Jabalpurverse. Recorded per BRD R8.
 - Artist: An ancestor (Beohar dynasty personal collection; uploaded by Beohar dynasty)
 - Source: https://commons.wikimedia.org/wiki/File:Gandhijis_Ashes_In_Jabalpur.jpg
 - Note: Immersion of Mahatma Gandhi’s ashes at Tilwara Ghat, Narmada, February 1948
+
+## utsav-durga-hero.jpg
+- Commons title: File:Goddess Durga idol at near madan Mahal, jabalpur during Navratri 2025.jpg
+- License: CC BY-SA 4.0
+- License URL: https://creativecommons.org/licenses/by-sa/4.0
+- Artist: Gamerzer
+- Source: https://commons.wikimedia.org/wiki/File:Goddess_Durga_idol_at_near_madan_Mahal,_jabalpur_during_Navratri_2025.jpg
+- Note: Goddess Durga idol near Madan Mahal, Jabalpur, Navratri 2025 — preferred Jabalpur-local hero over Vidisha File:Durga pratima 01.jpg (CC0, also cleared)
+
+## utsav-durga-chapter.jpg
+- Commons title: File:Durga pratima 08.jpg
+- License: CC0
+- License URL: https://creativecommons.org/publicdomain/zero/1.0/
+- Artist: Dev Jadiya
+- Source: https://commons.wikimedia.org/wiki/File:Durga_pratima_08.jpg
+- Note: Vidisha Navratri / Durga Puja, Madhya Pradesh (Oct 2025) — atmospheric for Utsav Mode, not a Jabalpur-specific pandal claim
+
+## utsav-durga-evening.jpg
+- Commons title: File:Durga pratima 20.jpg
+- License: CC0
+- License URL: https://creativecommons.org/publicdomain/zero/1.0/
+- Artist: Dev Jadiya
+- Source: https://commons.wikimedia.org/wiki/File:Durga_pratima_20.jpg
+- Note: Vidisha Navratri / Durga Puja, Madhya Pradesh (Oct 2025) — atmospheric for Utsav Mode, not a Jabalpur-specific pandal claim

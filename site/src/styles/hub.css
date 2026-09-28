@@ -1225,11 +1225,18 @@ html:has(.hub--immersive) body {
 }
 
 /* ---- Utsav hub ---- */
-.utsav-hero__window {
-  margin: 0.75rem 0 0;
-  font-size: 0.95rem;
-  color: color-mix(in srgb, #f7f5f1 80%, transparent);
-  font-variant-numeric: tabular-nums;
+.utsav-dir-panel {
+  max-width: 42rem;
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+
+.hub--utsav .hub-chapter--story {
+  min-height: min(85dvh, 40rem);
+  align-items: flex-end;
+}
+
+.hub--utsav .utsav-empty {
+  color: color-mix(in srgb, #f7f5f1 88%, transparent);
 }
 
 .utsav-hero__share {

@@ -32,7 +32,17 @@ const share = whatsappShareUrl(
   description={pandal.highlights?.en ?? pandal.name.en}
 >
   <div class="hub hub--immersive hub--utsav">
-    <header class="ghat-hero ghat-hero--solid">
+    <header class="ghat-hero">
+      <img
+        class="ghat-hero__photo"
+        src="/images/atmosphere/utsav-durga-evening.jpg"
+        alt=""
+        width="1600"
+        height="1200"
+        decoding="async"
+        fetchpriority="high"
+        style="object-position: center 35%"
+      />
       <div class="ghat-hero__veil" aria-hidden="true" />
       <div class="ghat-hero__top">
         <SiteNav client:load variant="hero" current="utsav" />
