@@ -1,0 +1,36 @@
+# Draft — pending local verification.
+id: jilheri
+slug: jilheri
+name:
+  en: Jilheri Ghat
+  hi: जिल्हेरी घाट
+aliases:
+  - jilheri
+  - जिल्हेरी
+  - jilharai
+category: heritage/ghat
+tags:
+  - narmada
+  - ghat
+coords: [79.850, 23.160]
+area: Jilheri
+summary:
+  en: Narmada ghat listed in Jayanti-season reports. Approach roads and parking need local confirmation before publishing as a trip stop.
+  hi: जयंती सीज़न की रिपोर्टों में सूचीबद्ध नर्मदा घाट। यात्रा पड़ाव के रूप में प्रकाशित करने से पहले सड़क और पार्किंग स्थानीय रूप से पुष्टि करें।
+description:
+  en: Jilheri is named in festival-season lists along the Narmada trail west of the main city ghats. Roads and parking are not yet field-verified here — arrive with daylight, ask locally for the current approach, and do not assume boats or facilities.
+  hi: जिल्हेरी मुख्य शहर घाटों के पश्चिम नर्मदा ट्रेल पर त्योहारी सूचियों में आता है। सड़क और पार्किंग यहाँ अभी ज़मीनी रूप से सत्यापित नहीं — दिन की रोशनी में पहुँचें, वर्तमान रास्ता स्थानीय रूप से पूछें, और नौका या सुविधाएँ मानकर न चलें।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+etiquette:
+  en: Keep ritual space clear. Ask before photographing people at the water.
+  hi: अनुष्ठान स्थान खाली रखें। पानी पर लोगों की फोटो से पहले पूछें।
+river_safety:
+  en: Uneven access paths. Stay out of deep water. Confirm any boat claims locally — do not assume service. Emergency — 112.
+  hi: असमान पहुँच मार्ग। गहरे पानी से दूर रहें। किसी भी नौका दावे की स्थानीय पुष्टि करें — सेवा मानकर न चलें। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+sources: []
+images: []

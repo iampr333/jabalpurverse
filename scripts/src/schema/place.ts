@@ -188,6 +188,25 @@ export const placeSchema = z
       });
     }
 
+    // Ghats / Narmada places always need safety (draft or published).
+    const isGhat =
+      place.category.includes("ghat") || place.river === "narmada" || Boolean(place.ghat_type?.length);
+
+    if (isGhat && !place.river_safety) {
+      ctx.addIssue({
+        code: "custom",
+        message: "ghat / Narmada places need river_safety",
+        path: ["river_safety"],
+      });
+    }
+    if (isGhat && place.aarti && !place.aarti.checked_at) {
+      ctx.addIssue({
+        code: "custom",
+        message: "aarti ghats need aarti.checked_at",
+        path: ["aarti", "checked_at"],
+      });
+    }
+
     if (place.status !== "published") return;
 
     if (!place.sources.length) {
@@ -237,24 +256,6 @@ export const placeSchema = z
           path: ["access", "legs"],
         });
       }
-    }
-
-    const isGhat =
-      place.category.includes("ghat") || place.river === "narmada" || Boolean(place.ghat_type?.length);
-
-    if (isGhat && !place.river_safety) {
-      ctx.addIssue({
-        code: "custom",
-        message: "ghat pages need river_safety",
-        path: ["river_safety"],
-      });
-    }
-    if (isGhat && place.aarti && !place.aarti.checked_at) {
-      ctx.addIssue({
-        code: "custom",
-        message: "aarti ghats need aarti.checked_at",
-        path: ["aarti", "checked_at"],
-      });
     }
   });
 

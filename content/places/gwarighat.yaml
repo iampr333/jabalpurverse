@@ -1,0 +1,50 @@
+# Draft — aarti time not committee-confirmed; do not treat as official.
+id: gwarighat
+slug: gwarighat
+name:
+  en: Gwarighat
+  hi: ग्वारीघाट
+aliases:
+  - gwarighat
+  - gwaari ghat
+  - ग्वारीघाट
+  - narmada maha aarti
+category: heritage/ghat
+tags:
+  - narmada
+  - aarti
+  - ghat
+  - boating
+coords: [79.913, 23.126]
+area: Gwarighat
+summary:
+  en: Main Narmada ghat for the evening Maha Aarti — about 9 km from Jabalpur Junction. Timing and boating must be confirmed locally.
+  hi: सायंकालीन महा आरती का प्रमुख नर्मदा घाट — जबलपुर जंक्शन से लगभग ९ किमी। समय और नौका सेवा स्थानीय रूप से पुष्टि करें।
+description:
+  en: Gwarighat holds the daily Narmada Maha Aarti, temples including a half-submerged Maa Narmada shrine, Uma Ghat nearby, a Gurudwara, and seasonal fairs. Festival days can close boat operations — never assume boats are running.
+  hi: ग्वारीघाट पर दैनिक नर्मदा महा आरती, आधी डूबी माँ नर्मदा की मूर्ति वाला मंदिर, पास उमा घाट, गुरुद्वारा और मौसमी मेले होते हैं। त्योहारों पर नौका बंद हो सकती है — कभी अनुमान न लगाएँ।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+  - aarti
+  - boating
+  - fair
+aarti:
+  time_text: "About 7 pm daily, ~30 minutes (often earlier in winter) — confirm with the aarti committee"
+  checked_at: 2026-09-28
+  source:
+    type: contributor
+    url: ""
+    accessed: 2026-09-28
+etiquette:
+  en: Dress modestly. Keep flower and diya waste out of the river where possible. Respect the Gurudwara and temple spaces. Do not film devotees without consent.
+  hi: सादा वेश रखें। फूल और दीये का कचरा जहाँ संभव हो नदी में न डालें। गुरुद्वारा और मंदिर स्थानों का सम्मान करें। भक्तों की बिना अनुमति फिल्मांकन न करें।
+river_safety:
+  en: Slippery steps and strong currents. No swimming after dark. Keep children and elders close to the bank. Confirm boat status locally — festival days have closed main-ghat boats before. Emergency — 112.
+  hi: फिसलन भरी सीढ़ियाँ और तेज़ धार। अँधेरे के बाद स्नान न करें। बच्चों और बुज़ुर्गों को किनारे के पास रखें। नौका की स्थिति स्थानीय रूप से पूछें — त्योहारों पर मुख्य घाट पर नावें बंद रही हैं। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+  - kartik-fair
+sources: []
+images: []

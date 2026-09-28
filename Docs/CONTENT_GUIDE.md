@@ -8,7 +8,7 @@ Editorial content lives in Git under `content/`. User data lives in Supabase.
 - Statuses: `draft` | `published` | `temporarily_closed` | `permanently_closed` | `archived`
 - **Never publish** without `sources[]`, `verified_at`, and image `alt` + `credit` + `license`
 - For `published` tourism / heritage / food: require `timings`, `entry`, and at least one `access.legs` entry with `checked_at`
-- Ghats (`river: narmada` or ghat category): require `river_safety`; aarti ghats need `aarti.checked_at`
+- Ghats (`river: narmada` or ghat category): require `river_safety` (draft or published); aarti ghats need `aarti.checked_at`
 - Coordinates are `[lng, lat]` and must sit inside the Jabalpur day-trip bbox enforced by CI
 
 ## Validate locally

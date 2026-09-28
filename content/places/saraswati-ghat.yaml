@@ -1,0 +1,35 @@
+# Draft — pending local verification.
+id: saraswati-ghat
+slug: saraswati-ghat
+name:
+  en: Saraswati Ghat
+  hi: सरस्वती घाट
+aliases:
+  - saraswati ghat
+  - सरस्वती घाट
+category: heritage/ghat
+tags:
+  - narmada
+  - ghat
+coords: [79.900, 23.135]
+area: Jabalpur
+summary:
+  en: Narmada ghat named in local festival coverage. Exact approach and facilities still need on-ground check before published trip cards.
+  hi: स्थानीय त्योहारी कवरेज में नामित नर्मदा घाट। प्रकाशित यात्रा कार्ड से पहले पहुँच और सुविधाओं की ज़मीनी जाँच बाकी है।
+description:
+  en: Saraswati Ghat is remembered in local festival writing as one of the city’s Narmada stops. Facilities and the exact approach still need a ground check — treat this as a trail marker, confirm steps and parking on the day, and keep the river edge clear of waste.
+  hi: सरस्वती घाट स्थानीय त्योहारी लेखन में शहर के नर्मदा पड़ावों में याद किया जाता है। सुविधाएँ और सही पहुँच अभी ज़मीनी जाँच बाकी — इसे ट्रेल चिह्न समझें, उसी दिन सीढ़ियाँ और पार्किंग पुष्टि करें, और नदी किनारा कचरे से साफ़ रखें।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+etiquette:
+  en: Quiet respect at the water. Carry incense and flower waste away from the river when you can.
+  hi: पानी पर शांत सम्मान। जहाँ संभव हो अगरबत्ती और फूल का कचरा नदी से दूर ले जाएँ।
+river_safety:
+  en: Watch for slippery moss on stone. Do not swim alone. Festival crowds need meeting points for families. Emergency — 112.
+  hi: पत्थर पर फिसलन भरी काई से सावधान रहें। अकेले स्नान न करें। त्योहारी भीड़ में परिवारों के लिए मिलन बिंदु तय करें। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+sources: []
+images: []

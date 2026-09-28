@@ -13,12 +13,30 @@ tags:
   - narmada
   - marble-rocks
   - boating
+  - ghat
 coords: [79.812, 23.130]
 area: Bhedaghat
 summary:
-  en: Marble gorge on the Narmada — draft entry pending local verification.
-  hi: नर्मदा पर संगमरमर की घाटी — सत्यापन बाकी।
+  en: Marble gorge on the Narmada — draft entry pending local verification of fares, boat status, and timings.
+  hi: नर्मदा पर संगमरमर की घाटी — किराया, नौका स्थिति और समय की स्थानीय पुष्टि बाकी।
+description:
+  en: Famous marble cliffs and Narmada boating below the gorge. Monsoon and festival advisories change access — confirm before you go. Also a named halt in Jayanti and Mahotsav coverage.
+  hi: प्रसिद्ध संगमरमर चट्टानें और घाटी के नीचे नर्मदा नौका। मानसून और त्योहारी सलाह पहुँच बदलती है — जाने से पहले पुष्टि करें। जयंती और महोत्सव कवरेज में भी नामित पड़ाव।
 status: draft
+river: narmada
+ghat_type:
+  - bathing
+  - boating
+  - fair
+etiquette:
+  en: Stay behind safety rails where marked. Do not climb unstable rock edges for photos. Keep plastic off the gorge banks.
+  hi: जहाँ अंकित हो सुरक्षा रेल के पीछे रहें। फोटो के लिए अस्थिर चट्टान किनारों पर न चढ़ें। घाटी किनारे प्लास्टिक न छोड़ें।
+river_safety:
+  en: Strong currents under the cliffs. Boat and ropeway status change with season and festivals — confirm locally; never assume night boating. Keep clear of unmarked edges. Emergency — 112.
+  hi: चट्टानों के नीचे तेज़ धार। नौका और रोपवे की स्थिति मौसम और त्योहारों से बदलती है — स्थानीय पुष्टि करें; रात की नौका मानकर न चलें। बिना चिह्न किनारे से दूर रहें। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+  - narmada-mahotsav
 sources: []
 images: []
 # verified_at omitted until editorial check

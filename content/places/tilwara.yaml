@@ -1,0 +1,37 @@
+# Draft — pending local verification.
+id: tilwara
+slug: tilwara
+name:
+  en: Tilwara Ghat
+  hi: तिलवारा घाट
+aliases:
+  - tilwara
+  - तिलवारा
+  - tilwara ghat
+category: heritage/ghat
+tags:
+  - narmada
+  - ghat
+coords: [79.870, 23.150]
+area: Tilwara
+summary:
+  en: Narmada ghat on the Tilwara side of the city — remembered for river rituals and festival crowds. Distances and parking change; check locally.
+  hi: शहर की तिलवारा ओर का नर्मदा घाट — नदी अनुष्ठान और त्योहारी भीड़ के लिए जाना जाता है। दूरी और पार्किंग बदलते रहते हैं; स्थानीय रूप से पूछें।
+description:
+  en: Tilwara draws families for morning and festival-day rituals on the city’s Tilwara bank of the Narmada. Approach roads and parking fill early on Jayanti mornings — plan a meeting point and leave space for elders on the steps.
+  hi: तिलवारा शहर की तिलवारा ओर नर्मदा पर सुबह और त्योहारी अनुष्ठानों के लिए परिवारों को खींचता है। जयंती की सुबह पहुँच सड़कें और पार्किंग जल्दी भरते हैं — मिलन बिंदु तय करें और सीढ़ियों पर बुज़ुर्गों के लिए जगह छोड़ें।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+  - fair
+etiquette:
+  en: Give space to families performing rituals. Carry waste back. Avoid loud music at the water’s edge.
+  hi: अनुष्ठान करने वाले परिवारों को जगह दें। कचरा वापस ले जाएँ। पानी के किनारे तेज़ संगीत से बचें।
+river_safety:
+  en: Crowds thicken on festival mornings. Watch your footing on uneven banks. Keep valuables secure. Emergency — 112.
+  hi: त्योहारी सुबह भीड़ बढ़ती है। असमान किनारे पर सावधानी बरतें। सामान सुरक्षित रखें। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+sources: []
+images: []

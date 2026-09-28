@@ -1,88 +1,44 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SiteNav } from "../components/SiteNav";
 ---
 
 <BaseLayout title="Support · Jabalpurverse" description="Voluntary support for Jabalpurverse" river>
-  <main class="support">
-    <p class="support__back">
-      <a href="/">← Jabalpurverse</a>
-    </p>
-    <h1 class="support__title">Support</h1>
-    <p class="support__lead">
-      UPI donate and transparency page land in P1. Support is optional; the site stays free.
-    </p>
-    <p class="support__greeting" lang="hi">नर्मदे हर</p>
-    <p class="support__body">
-      A calm place for the city — funded later by voluntary support, never by blocking content.
-    </p>
+  <div class="support">
+    <SiteNav client:load variant="page" current="support" />
+
+    <main class="support__main">
+      <p class="support__greeting" data-jv-greeting>
+        <span lang="hi">नर्मदे हर</span>
+        <span aria-hidden="true"> · </span>
+        <span>Narmade Har</span>
+      </p>
+      <h1 class="support__title">
+        <span data-en>Support</span>
+        <span data-hi>सहयोग</span>
+      </h1>
+      <p class="support__lead">
+        <span data-en>
+          UPI donate and transparency page land in a later P1 slice. Support is optional; the site
+          stays free.
+        </span>
+        <span data-hi>
+          UPI दान और पारदर्शिता पृष्ठ बाद के P1 स्लाइस में आएगा। सहयोग वैकल्पिक है; साइट निःशुल्क
+          रहती है।
+        </span>
+      </p>
+      <p class="support__body">
+        <span data-en>
+          A calm place for the city — funded later by voluntary support, never by blocking content.
+        </span>
+        <span data-hi>
+          शहर के लिए शांत जगह — बाद में स्वैच्छिक सहयोग से; कभी सामग्री रोककर नहीं।
+        </span>
+      </p>
+    </main>
+
     <footer class="support__foot">
       <p>Jabalpur · Madhya Pradesh</p>
     </footer>
-  </main>
+  </div>
 </BaseLayout>
-
-<style>
-  .support {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
-    max-width: 36rem;
-    margin-inline: auto;
-    padding: 2.5rem 1.25rem 1.5rem;
-  }
-
-  .support__back {
-    margin: 0 0 1.5rem;
-  }
-
-  .support__back a {
-    color: var(--river);
-    text-decoration: none;
-    text-underline-offset: 3px;
-  }
-
-  .support__back a:hover,
-  .support__back a:focus-visible {
-    text-decoration: underline;
-  }
-
-  .support__title {
-    margin: 0 0 0.75rem;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 6vw, 2.75rem);
-    color: var(--river-deep);
-  }
-
-  .support__lead {
-    margin: 0 0 1.75rem;
-    color: var(--muted);
-    font-size: 1.05rem;
-  }
-
-  .support__greeting {
-    margin: 0 0 0.5rem;
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    color: var(--river);
-  }
-
-  .support__body {
-    margin: 0;
-    color: var(--muted);
-    max-width: 28rem;
-  }
-
-  .support__foot {
-    margin-top: auto;
-    padding-top: 2rem;
-    border-top: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-
-  .support__foot p {
-    margin: 0;
-  }
-</style>

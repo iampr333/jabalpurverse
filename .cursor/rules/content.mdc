@@ -23,8 +23,8 @@ Must include:
 
 ## Ghats
 
-- `river_safety` required when `river: narmada` or ghat category.
-- Aarti ghats need `aarti.checked_at`.
+- `river_safety` required on every ghat / `river: narmada` place (draft or published).
+- Aarti ghats need `aarti.checked_at` whenever `aarti` is present.
 
 ## Images and coords
 

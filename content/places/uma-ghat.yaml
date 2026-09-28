@@ -1,0 +1,33 @@
+# Draft — pending local verification.
+id: uma-ghat
+slug: uma-ghat
+name:
+  en: Uma Ghat
+  hi: उमा घाट
+aliases:
+  - uma ghat
+  - उमा घाट
+category: heritage/ghat
+tags:
+  - narmada
+  - ghat
+coords: [79.915, 23.125]
+area: Gwarighat
+summary:
+  en: Quiet Narmada ghat beside Gwarighat — rituals, river edge, and evening light. Confirm access and any festival notices locally.
+  hi: ग्वारीघाट के पास शांत नर्मदा घाट — अनुष्ठान, नदी किनारा और संध्या प्रकाश। पहुँच और त्योहारी सूचनाएँ स्थानीय रूप से पुष्टि करें।
+description:
+  en: Uma Ghat sits next to the busier Gwarighat stretch — a calmer edge for personal rituals and watching the river turn gold at dusk. Steps and lighting change with the season; treat published notes as orientation until checked on the ground.
+  hi: उमा घाट व्यस्त ग्वारीघाट के पास है — व्यक्तिगत अनुष्ठान और संध्या में नदी का सुनहरा रंग देखने के लिए शांत किनारा। सीढ़ियाँ और रोशनी मौसम के साथ बदलते हैं; प्रकाशित नोट्स को ज़मीनी जाँच तक केवल दिशा समझें।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+etiquette:
+  en: Keep the steps clear for elders. Do not leave plastic near the water. Ask before photographing rituals.
+  hi: बुज़ुर्गों के लिए सीढ़ियाँ खाली रखें। पानी के पास प्लास्टिक न छोड़ें। अनुष्ठान की फोटो से पहले अनुमति लें।
+river_safety:
+  en: Wet stone steps are slippery. Stay clear of deep water after dusk. Supervise children. Emergency — 112.
+  hi: गीली पत्थर की सीढ़ियाँ फिसलन भरी होती हैं। संध्या के बाद गहरे पानी से दूर रहें। बच्चों पर नज़र रखें। आपातकाल — ११२।
+sources: []
+images: []

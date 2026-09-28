@@ -1,0 +1,385 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SiteNav } from "../../components/SiteNav";
+import { AartiCard } from "../../components/AartiCard";
+import { getGhatMedia } from "../../lib/ghat-media";
+import {
+  aartiNeedsLocalCheck,
+  GHAT_TRAIL_ORDER,
+  getPlaceBySlug,
+  loadGhatTrail,
+  mapsLinks,
+  parseAartiHour,
+} from "../../lib/places";
+
+export function getStaticPaths() {
+  return loadGhatTrail().map((place) => ({
+    params: { slug: place.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const place = getPlaceBySlug(slug!);
+if (!place) {
+  throw new Error(`Unknown ghat slug: ${slug}`);
+}
+
+const media = getGhatMedia(place.slug);
+const links = mapsLinks(place.coords, place.name.en);
+const trail = [...GHAT_TRAIL_ORDER];
+const idx = trail.indexOf(place.slug as (typeof GHAT_TRAIL_ORDER)[number]);
+const prevSlug = idx > 0 ? trail[idx - 1] : null;
+const nextSlug = idx >= 0 && idx < trail.length - 1 ? trail[idx + 1] : null;
+const prev = prevSlug ? getPlaceBySlug(prevSlug) : null;
+const next = nextSlug ? getPlaceBySlug(nextSlug) : null;
+const parsed = place.aarti ? parseAartiHour(place.aarti.time_text) : null;
+const needsCheck = place.aarti ? aartiNeedsLocalCheck(place) : false;
+const trailIndex = idx >= 0 ? idx + 1 : null;
+
+const extraCopy: Record<string, { hEn: string; hHi: string; en: string; hi: string }> = {
+  bhedaghat: {
+    hEn: "Near the gorge",
+    hHi: "घाटी के पास",
+    en: "Chausath Yogini sits above the marble rocks — a quiet stop when you combine Bhedaghat with the river ghats.",
+    hi: "चौसठ योगिनी संगमरमर की चट्टानों के ऊपर है — भेड़ाघाट के साथ घाट यात्रा में एक शांत पड़ाव।",
+  },
+  "saraswati-ghat": {
+    hEn: "Along the steps",
+    hHi: "सीढ़ियों पर",
+    en: "Another view of Saraswati Ghat on the Narmada — temples, lingas, and the river edge at the Bhedaghat circuit.",
+    hi: "नर्मदा पर सरस्वती घाट का एक और दृश्य — भेड़ाघाट सर्किट में मंदिर, शिवलिंग और नदी किनारा।",
+  },
+};
+const extra = media.extra ? extraCopy[place.slug] : null;
+---
+
+<BaseLayout title={`${place.name.en} · Narmada · Jabalpurverse`} description={place.summary.en}>
+  <div class="hub hub--immersive hub--ghat">
+    <header class={`ghat-hero${!media.hero ? " ghat-hero--solid" : ""}`}>
+      {
+        media.hero && (
+          <img
+            class="ghat-hero__photo"
+            src={media.hero.src}
+            alt=""
+            width="1600"
+            height="1067"
+            decoding="async"
+            fetchpriority="high"
+            style={`object-position: ${media.hero.position}`}
+          />
+        )
+      }
+      <div class="ghat-hero__veil" aria-hidden="true" />
+      <div class="ghat-hero__top">
+        <SiteNav client:load variant="hero" current="narmada" />
+      </div>
+      <div class="ghat-hero__copy">
+        <p class="ghat-hero__crumb">
+          <a href="/narmada">
+            <span data-en>Narmada Hub</span>
+            <span data-hi>नर्मदा हब</span>
+          </a>
+          {
+            trailIndex && (
+              <span class="ghat-hero__trail-n" aria-hidden="true">
+                · {trailIndex}/{trail.length}
+              </span>
+            )
+          }
+        </p>
+        <p class="ghat-hero__greeting" data-jv-greeting>
+          <span lang="hi">नर्मदे हर</span>
+          <span aria-hidden="true"> · </span>
+          <span>Narmade Har</span>
+        </p>
+        <h1 class="ghat-hero__title">
+          <span lang="hi">{place.name.hi}</span>
+          <span class="hub__title-sep" aria-hidden="true"> · </span>
+          <span>{place.name.en}</span>
+        </h1>
+        <p class="ghat-hero__summary">
+          <span data-en>{place.summary.en}</span>
+          <span data-hi>{place.summary.hi}</span>
+        </p>
+        {
+          place.status === "draft" && (
+            <p class="ghat-hero__draft">
+              <span data-en>Draft — confirm details locally before you travel.</span>
+              <span data-hi>ड्राफ़्ट — यात्रा से पहले विवरण स्थानीय रूप से पुष्टि करें।</span>
+            </p>
+          )
+        }
+        {
+          !media.hero && (
+            <p class="ghat-hero__photo-note">
+              <span data-en>No Commons photo of this ghat yet — river chrome until a place photo is added.</span>
+              <span data-hi>इस घाट की Commons तस्वीर अभी नहीं — जगह की फोटो जुड़ने तक नदी रंग।</span>
+            </p>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      place.description && (
+        <section
+          class={`hub-chapter hub-chapter--story${!media.chapter ? " hub-chapter--solid" : ""}`}
+          aria-labelledby="story-heading"
+        >
+          {
+            media.chapter && (
+              <img
+                class="hub-chapter__photo"
+                src={media.chapter.src}
+                alt=""
+                width="1600"
+                height="1067"
+                loading="lazy"
+                decoding="async"
+                style={`object-position: ${media.chapter.position}`}
+              />
+            )
+          }
+          {media.chapter && <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />}
+          <div class="hub-chapter__frame">
+            <div class="hub-chapter__panel ghat-story">
+              <h2 id="story-heading" class="hub-chapter__h2">
+                <span data-en>At the ghat</span>
+                <span data-hi>घाट पर</span>
+              </h2>
+              <p class="hub-chapter__lead ghat-story__body">
+                <span data-en>{place.description.en}</span>
+                <span data-hi>{place.description.hi}</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      place.aarti && media.aarti && (
+        <section class="hub-chapter hub-chapter--aarti" aria-labelledby="aarti-heading">
+          <img
+            class="hub-chapter__photo"
+            src={media.aarti.src}
+            alt=""
+            width="1600"
+            height="1067"
+            loading="lazy"
+            decoding="async"
+            style={`object-position: ${media.aarti.position}`}
+          />
+          <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+          <div class="hub-chapter__frame">
+            <h2 id="aarti-heading" class="sr-only">
+              <span data-en>Aaj ki Aarti</span>
+              <span data-hi>आज की आरती</span>
+            </h2>
+            <AartiCard
+              client:visible
+              tone="on-photo"
+              placeNameEn={place.name.en}
+              placeNameHi={place.name.hi}
+              placeSlug={place.slug}
+              timeText={place.aarti.time_text}
+              checkedAt={place.aarti.checked_at}
+              needsLocalCheck={needsCheck}
+              hour={parsed?.hour ?? null}
+              minute={parsed?.minute ?? null}
+            />
+          </div>
+        </section>
+      )
+    }
+
+    {
+      place.aarti && !media.aarti && (
+        <section class="ghat-band" aria-labelledby="aarti-heading">
+          <div class="ghat-band__frame">
+            <h2 id="aarti-heading" class="sr-only">
+              <span data-en>Aaj ki Aarti</span>
+              <span data-hi>आज की आरती</span>
+            </h2>
+            <AartiCard
+              client:visible
+              tone="on-photo"
+              placeNameEn={place.name.en}
+              placeNameHi={place.name.hi}
+              placeSlug={place.slug}
+              timeText={place.aarti.time_text}
+              checkedAt={place.aarti.checked_at}
+              needsLocalCheck={needsCheck}
+              hour={parsed?.hour ?? null}
+              minute={parsed?.minute ?? null}
+            />
+          </div>
+        </section>
+      )
+    }
+
+    {
+      media.extra && extra && (
+        <section class="hub-chapter hub-chapter--extra" aria-labelledby="extra-heading">
+          <img
+            class="hub-chapter__photo"
+            src={media.extra.src}
+            alt=""
+            width="1600"
+            height="1067"
+            loading="lazy"
+            decoding="async"
+            style={`object-position: ${media.extra.position}`}
+          />
+          <div class="hub-chapter__veil" aria-hidden="true" />
+          <div class="hub-chapter__frame">
+            <div class="hub-chapter__panel ghat-story">
+              <h2 id="extra-heading" class="hub-chapter__h2">
+                <span data-en>{extra.hEn}</span>
+                <span data-hi>{extra.hHi}</span>
+              </h2>
+              <p class="hub-chapter__lead ghat-story__body">
+                <span data-en>{extra.en}</span>
+                <span data-hi>{extra.hi}</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      (place.etiquette || place.river_safety) && (
+        <section class="ghat-care" aria-labelledby="care-heading">
+          <div class="ghat-care__frame">
+            <h2 id="care-heading" class="ghat-care__h2">
+              <span data-en>Respect & safety</span>
+              <span data-hi>सम्मान और सुरक्षा</span>
+            </h2>
+            <div class="ghat-care__grid">
+              {
+                place.etiquette && (
+                  <div class="ghat-care__panel">
+                    <h3 class="ghat-care__h3">
+                      <span data-en>Etiquette</span>
+                      <span data-hi>शिष्टाचार</span>
+                    </h3>
+                    <p>
+                      <span data-en>{place.etiquette.en}</span>
+                      <span data-hi>{place.etiquette.hi}</span>
+                    </p>
+                  </div>
+                )
+              }
+              {
+                place.river_safety && (
+                  <div class="ghat-care__panel ghat-care__panel--safety">
+                    <h3 class="ghat-care__h3">
+                      <span data-en>River safety</span>
+                      <span data-hi>नदी सुरक्षा</span>
+                    </h3>
+                    <p>
+                      <span data-en>{place.river_safety.en}</span>
+                      <span data-hi>{place.river_safety.hi}</span>
+                    </p>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="ghat-maps" aria-labelledby="maps-heading">
+      <div class="ghat-maps__frame">
+        <h2 id="maps-heading" class="ghat-maps__h2">
+          <span data-en>Find your way</span>
+          <span data-hi>रास्ता खोजें</span>
+        </h2>
+        <div class="ghat-maps__actions">
+          <a class="ghat-maps__btn ghat-maps__btn--primary" href={links.geo}>
+            <span data-en>Open in maps</span>
+            <span data-hi>मैप्स में खोलें</span>
+          </a>
+          <a
+            class="ghat-maps__btn"
+            href={links.osm}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            OpenStreetMap
+          </a>
+          <a
+            class="ghat-maps__btn"
+            href={links.google}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span data-en>Google Maps</span>
+            <span data-hi>Google Maps</span>
+          </a>
+        </div>
+        <p class="ghat-maps__note">
+          <span data-en>Deep links only — no Google Maps Platform API.</span>
+          <span data-hi>केवल डीप लिंक — कोई Google Maps Platform API नहीं।</span>
+        </p>
+      </div>
+    </section>
+
+    <nav class="ghat-pager" aria-label="Ghat trail">
+      <div class="ghat-pager__frame">
+        {
+          prev ? (
+            <a class="ghat-pager__link" href={`/narmada/${prev.slug}`}>
+              <span class="ghat-pager__dir">
+                <span data-en>Previous</span>
+                <span data-hi>पिछला</span>
+              </span>
+              <span class="ghat-pager__name">
+                <span data-en>{prev.name.en}</span>
+                <span data-hi>{prev.name.hi}</span>
+              </span>
+            </a>
+          ) : (
+            <span class="ghat-pager__link ghat-pager__link--empty" />
+          )
+        }
+        <a class="ghat-pager__hub" href="/narmada">
+          <span data-en>All ghats</span>
+          <span data-hi>सभी घाट</span>
+        </a>
+        {
+          next ? (
+            <a class="ghat-pager__link ghat-pager__link--next" href={`/narmada/${next.slug}`}>
+              <span class="ghat-pager__dir">
+                <span data-en>Next</span>
+                <span data-hi>अगला</span>
+              </span>
+              <span class="ghat-pager__name">
+                <span data-en>{next.name.en}</span>
+                <span data-hi>{next.name.hi}</span>
+              </span>
+            </a>
+          ) : (
+            <span class="ghat-pager__link ghat-pager__link--empty" />
+          )
+        }
+      </div>
+    </nav>
+
+    <footer class="hub-foot">
+      <p>
+        Photos: Wikimedia Commons (CC BY-SA / CC0 / PD) ·
+        <a href="/images/credits/ATTRIBUTION.md">Attribution</a>
+      </p>
+      <p>
+        <a href="/narmada">
+          <span data-en>Back to Narmada Hub</span>
+          <span data-hi>नर्मदा हब पर वापस</span>
+        </a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>

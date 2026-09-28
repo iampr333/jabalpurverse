@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./hero.css";
+@import "./hub.css";
 @import "lenis/dist/lenis.css";
 
 /* Photo-led home sits on river-deep so chapter seams never flash marble. */

@@ -1,0 +1,236 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SiteNav } from "../../components/SiteNav";
+import { AartiCard } from "../../components/AartiCard";
+import {
+  aartiNeedsLocalCheck,
+  loadGhatTrail,
+  parseAartiHour,
+} from "../../lib/places";
+
+const ghats = loadGhatTrail();
+const aartiGhat = ghats.find((g) => g.aarti);
+const parsed = aartiGhat?.aarti ? parseAartiHour(aartiGhat.aarti.time_text) : null;
+const needsCheck = aartiGhat ? aartiNeedsLocalCheck(aartiGhat) : true;
+---
+
+<BaseLayout
+  title="Narmada Hub · Jabalpurverse"
+  description="Narmada Ghat Trail, Aaj ki Aarti, river safety, and Nirmal Narmada — Jabalpur."
+>
+  <div class="hub hub--immersive">
+    <!-- First viewport: full-bleed evening aarti -->
+    <section class="hero-bleed hub-hero">
+      <div class="hero-bleed__media" aria-hidden="true">
+        <img
+          class="hero-bleed__photo"
+          src="/images/atmosphere/gwarighat-mass-aarti.jpg"
+          alt=""
+          width="1600"
+          height="1067"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <div class="hero-bleed__veil" />
+        <div class="hero-bleed__dawn" />
+      </div>
+
+      <div class="hero-bleed__frame">
+        <SiteNav client:load variant="hero" current="narmada" />
+
+        <div class="hero-bleed__copy hub-hero__copy">
+          <p class="hero-bleed__greeting" data-jv-greeting>
+            <span lang="hi">नर्मदे हर</span>
+            <span aria-hidden="true"> · </span>
+            <span>Narmade Har</span>
+          </p>
+          <h1 class="hero-bleed__title">
+            <span data-en>Narmada Hub</span>
+            <span data-hi>नर्मदा हब</span>
+          </h1>
+          <p class="hero-bleed__tagline">
+            <span data-en>
+              The river at the heart of Jabalpur — ghats, evening aarti, and care for the water.
+            </span>
+            <span data-hi>
+              जबलपुर के हृदय की नदी — घाट, सायंकालीन आरती, और पानी की देखभाल।
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {
+      aartiGhat?.aarti && (
+        <section class="hub-chapter hub-chapter--aarti" aria-labelledby="aarti-heading">
+          <img
+            class="hub-chapter__photo"
+            src="/images/atmosphere/gwarighat-priest-aarti.jpg"
+            alt=""
+            width="1600"
+            height="1067"
+            loading="lazy"
+            decoding="async"
+            style="object-position: 72% center"
+          />
+          <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+          <div class="hub-chapter__frame">
+            <h2 id="aarti-heading" class="sr-only">
+              <span data-en>Aaj ki Aarti</span>
+              <span data-hi>आज की आरती</span>
+            </h2>
+            <AartiCard
+              client:visible
+              tone="on-photo"
+              placeNameEn={aartiGhat.name.en}
+              placeNameHi={aartiGhat.name.hi}
+              placeSlug={aartiGhat.slug}
+              timeText={aartiGhat.aarti.time_text}
+              checkedAt={aartiGhat.aarti.checked_at}
+              needsLocalCheck={needsCheck}
+              hour={parsed?.hour ?? null}
+              minute={parsed?.minute ?? null}
+              ghatHref={`/narmada/${aartiGhat.slug}`}
+            />
+          </div>
+        </section>
+      )
+    }
+
+    <section class="hub-chapter hub-chapter--trail" aria-labelledby="trail-heading">
+      <img
+        class="hub-chapter__photo"
+        src="/images/atmosphere/gwarighat-temple.jpg"
+        alt=""
+        width="1600"
+        height="900"
+        loading="lazy"
+        decoding="async"
+        style="object-position: center 55%"
+      />
+      <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+      <div class="hub-chapter__frame">
+        <div class="hub-chapter__panel">
+          <h2 id="trail-heading" class="hub-chapter__h2">
+            <span data-en>Ghat Trail</span>
+            <span data-hi>घाट पथ</span>
+          </h2>
+          <p class="hub-chapter__lead">
+            <span data-en>Seven riverside stops — etiquette and safety on every page.</span>
+            <span data-hi>सात नदी किनारे के पड़ाव — हर पृष्ठ पर शिष्टाचार और सुरक्षा।</span>
+          </p>
+          <ol class="hub__trail hub__trail--on-photo">
+            {
+              ghats.map((ghat, i) => (
+                <li>
+                  <a class="hub__trail-link" href={`/narmada/${ghat.slug}`}>
+                    <span class="hub__trail-num" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span class="hub__trail-names">
+                      <span lang="hi">{ghat.name.hi}</span>
+                      <span aria-hidden="true"> · </span>
+                      <span>{ghat.name.en}</span>
+                    </span>
+                    <span class="hub__trail-go" aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="hub-chapter hub-chapter--care" aria-labelledby="nirmal-heading">
+      <img
+        class="hub-chapter__photo"
+        src="/images/atmosphere/gwarighat-ghat-life.jpg"
+        alt=""
+        width="1200"
+        height="1600"
+        loading="lazy"
+        decoding="async"
+        style="object-position: center 30%"
+      />
+      <div class="hub-chapter__veil hub-chapter__veil--strong" aria-hidden="true" />
+      <div class="hub-chapter__frame hub-chapter__frame--split">
+        <div class="hub-chapter__panel">
+          <h2 id="nirmal-heading" class="hub-chapter__h2">
+            <span data-en>Nirmal Narmada</span>
+            <span data-hi>निर्मल नर्मदा</span>
+          </h2>
+          <p class="hub-chapter__lead">
+            <span data-en>
+              Keep the Narmada clean. Prefer flower and diya offerings that do not leave plastic in
+              the water. Carry waste back when you can. Community clean-up drives will appear here
+              when verified organisers share them.
+            </span>
+            <span data-hi>
+              नर्मदा को स्वच्छ रखें। ऐसे फूल और दीये चुनें जो पानी में प्लास्टिक न छोड़ें। जहाँ संभव हो
+              कचरा वापस ले जाएँ। सत्यापित आयोजकों द्वारा साझा होने पर सामुदायिक सफाई अभियान यहाँ दिखेंगे।
+            </span>
+          </p>
+        </div>
+        <div class="hub-chapter__panel">
+          <h2 class="hub-chapter__h2" id="fest-heading">
+            <span data-en>Festivals on the river</span>
+            <span data-hi>नदी के त्योहार</span>
+          </h2>
+          <p class="hub-chapter__lead">
+            <span data-en>
+              Narmada Jayanti, Mahotsav, Kartik fair, and Parikrama hubs arrive with Utsav Mode.
+              Dates and programmes — confirm locally for now.
+            </span>
+            <span data-hi>
+              नर्मदा जयंती, महोत्सव, कार्तिक मेला और परिक्रमा हब उत्सव मोड के साथ आएँगे। तिथियाँ और
+              कार्यक्रम — अभी स्थानीय रूप से पुष्टि करें।
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety: no greeting — intentional -->
+    <section class="hub-safety" aria-labelledby="safety-heading">
+      <div class="hub-safety__frame">
+        <h2 id="safety-heading" class="hub-safety__h2">
+          <span data-en>River safety</span>
+          <span data-hi>नदी सुरक्षा</span>
+        </h2>
+        <ul class="hub-safety__list">
+          <li>
+            <span data-en>Slippery steps and strong currents — supervise children and elders.</span>
+            <span data-hi>फिसलन भरी सीढ़ियाँ और तेज़ धार — बच्चों और बुज़ुर्गों पर नज़र रखें।</span>
+          </li>
+          <li>
+            <span data-en>
+              Boat status changes with season and festivals — confirm locally; never assume night
+              boating.
+            </span>
+            <span data-hi>
+              नौका की स्थिति मौसम और त्योहारों से बदलती है — स्थानीय पुष्टि करें; रात की नौका मानकर न
+              चलें।
+            </span>
+          </li>
+          <li>
+            <span data-en>Emergency — dial 112.</span>
+            <span data-hi>आपातकाल — ११२ डायल करें।</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="hub-foot">
+      <p>
+        Photos: Wikimedia Commons (CC BY-SA) ·
+        <a href="/images/credits/ATTRIBUTION.md">Attribution</a>
+      </p>
+      <p>
+        <span lang="hi">नर्मदे हर</span> · Jabalpur · Madhya Pradesh
+      </p>
+    </footer>
+  </div>
+</BaseLayout>

@@ -1,6 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
-
-type Lang = "en" | "hi";
+import { SiteNav } from "./SiteNav";
 
 const copy = {
   en: {
@@ -10,10 +8,6 @@ const copy = {
     tagline: "Explore Jabalpur. Discover its stories. Experience it differently.",
     placeHi: "नर्मदा",
     placeEn: "Narmada",
-    support: "Support",
-    lang: "हिंदी",
-    greetingOff: "Hide greeting",
-    greetingOn: "Show greeting",
   },
   hi: {
     brand: "जबलपुरवर्स",
@@ -22,45 +16,11 @@ const copy = {
     tagline: "जबलपुर खोजें। इसकी कहानियाँ जानें। अलग अंदाज़ में जिएँ।",
     placeHi: "नर्मदा",
     placeEn: "Narmada",
-    support: "सहयोग",
-    lang: "English",
-    greetingOff: "अभिवादन छिपाएँ",
-    greetingOn: "अभिवादन दिखाएँ",
   },
 } as const;
 
-function detectLang(): Lang {
-  if (typeof navigator === "undefined") return "en";
-  return navigator.language.toLowerCase().startsWith("hi") ? "hi" : "en";
-}
-
-/** Full-bleed Narmada hero + transparent text nav. */
+/** Full-bleed Narmada hero + shared site nav. */
 export function ShellChrome() {
-  const [lang, setLang] = useState<Lang>("en");
-  const [greetingOn, setGreetingOn] = useState(true);
-
-  useEffect(() => {
-    const storedLang = localStorage.getItem("jv-lang") as Lang | null;
-    const storedGreet = localStorage.getItem("jv-greeting");
-    setLang(storedLang === "hi" || storedLang === "en" ? storedLang : detectLang());
-    setGreetingOn(storedGreet !== "off");
-  }, []);
-
-  const t = copy[lang];
-
-  function toggleLang() {
-    const next = lang === "en" ? "hi" : "en";
-    setLang(next);
-    localStorage.setItem("jv-lang", next);
-    document.documentElement.lang = next === "hi" ? "hi" : "en";
-  }
-
-  function toggleGreeting() {
-    const next = !greetingOn;
-    setGreetingOn(next);
-    localStorage.setItem("jv-greeting", next ? "on" : "off");
-  }
-
   return (
     <section class="hero-bleed">
       <div class="hero-bleed__media" aria-hidden="true">
@@ -106,48 +66,26 @@ export function ShellChrome() {
       </div>
 
       <div class="hero-bleed__frame">
-        <header class="hero-bleed__top">
-          <a class="hero-bleed__brand" href="/">
-            <span class="hero-bleed__mark" aria-hidden="true">
-              <svg viewBox="0 0 64 24" width="56" height="21">
-                <path
-                  d="M2 14 C18 2, 46 2, 62 14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>
-            {t.brand}
-          </a>
-          <nav class="hero-bleed__nav" aria-label="Site">
-            <button type="button" class="hero-bleed__link" onClick={toggleGreeting}>
-              {greetingOn ? t.greetingOff : t.greetingOn}
-            </button>
-            <button type="button" class="hero-bleed__link" onClick={toggleLang}>
-              {t.lang}
-            </button>
-            <a class="hero-bleed__support" href="/support">
-              {t.support}
-            </a>
-          </nav>
-        </header>
+        <SiteNav variant="hero" current="home" />
 
         <main class="hero-bleed__copy">
-          {greetingOn && (
-            <p class="hero-bleed__greeting">
-              <span lang="hi">{t.greetingHi}</span>
-              <span aria-hidden="true"> · </span>
-              <span>{t.greeting}</span>
-            </p>
-          )}
-          <h1 class="hero-bleed__title">{t.brand}</h1>
-          <p class="hero-bleed__tagline">{t.tagline}</p>
-          <p class="hero-bleed__place">
-            <span lang="hi">{t.placeHi}</span>
+          <p class="hero-bleed__greeting" data-jv-greeting>
+            <span lang="hi">{copy.hi.greetingHi}</span>
             <span aria-hidden="true"> · </span>
-            <span>{t.placeEn}</span>
+            <span>{copy.en.greeting}</span>
+          </p>
+          <h1 class="hero-bleed__title">
+            <span data-en>{copy.en.brand}</span>
+            <span data-hi>{copy.hi.brand}</span>
+          </h1>
+          <p class="hero-bleed__tagline">
+            <span data-en>{copy.en.tagline}</span>
+            <span data-hi>{copy.hi.tagline}</span>
+          </p>
+          <p class="hero-bleed__place">
+            <span lang="hi">{copy.hi.placeHi}</span>
+            <span aria-hidden="true"> · </span>
+            <span>{copy.en.placeEn}</span>
           </p>
         </main>
       </div>

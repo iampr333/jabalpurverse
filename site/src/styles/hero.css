@@ -156,6 +156,8 @@
 
 .hero-bleed__link {
   min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
   padding: 0;
   border: 0;
   background: transparent;
@@ -163,11 +165,13 @@
   font: inherit;
   font-size: 0.95rem;
   cursor: pointer;
+  text-decoration: none;
   text-underline-offset: 3px;
 }
 
 .hero-bleed__link:hover,
-.hero-bleed__link:focus-visible {
+.hero-bleed__link:focus-visible,
+.hero-bleed__link[aria-current="page"] {
   color: #f7f5f1;
   text-decoration: underline;
 }
@@ -184,7 +188,8 @@
 }
 
 .hero-bleed__support:hover,
-.hero-bleed__support:focus-visible {
+.hero-bleed__support:focus-visible,
+.hero-bleed__support[aria-current="page"] {
   color: #f7f5f1;
   text-decoration: underline;
 }

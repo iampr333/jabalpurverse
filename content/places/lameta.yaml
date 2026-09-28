@@ -1,0 +1,36 @@
+# Draft — pending local verification.
+id: lameta
+slug: lameta
+name:
+  en: Lameta Ghat
+  hi: लमेटा घाट
+aliases:
+  - lameta
+  - लमेटा
+  - lametaghat
+category: heritage/ghat
+tags:
+  - narmada
+  - ghat
+coords: [79.895, 23.140]
+area: Lameta
+summary:
+  en: Historic Narmada ghat area named in festival reports alongside Gwarighat and Tilwara. Use for orientation only until access details are verified.
+  hi: ग्वारीघाट और तिलवारा के साथ त्योहारी रिपोर्टों में उल्लिखित ऐतिहासिक नर्मदा घाट क्षेत्र। पहुँच विवरण सत्यापित होने तक केवल दिशा के लिए।
+description:
+  en: Lameta appears with Gwarighat and Tilwara in Jayanti-season coverage as part of the city’s river circuit. Banks and access shift after rain — use this page to place the ghat on the trail, then confirm paths and any temporary closures locally.
+  hi: लमेटा जयंती सीज़न की कवरेज में ग्वारीघाट और तिलवारा के साथ शहर के नदी सर्किट का हिस्सा है। बारिश के बाद किनारे और पहुँच बदलते हैं — इस पेज से घाट को ट्रेल पर रखें, फिर रास्ते और अस्थायी बंद स्थानीय रूप से पुष्टि करें।
+status: draft
+river: narmada
+ghat_type:
+  - bathing
+etiquette:
+  en: Follow local guides on where bathing is customary. Leave no plastic near the steps.
+  hi: स्नान कहाँ प्रथा है, स्थानीय मार्गदर्शन का पालन करें। सीढ़ियों के पास प्लास्टिक न छोड़ें।
+river_safety:
+  en: Banks can be steep and muddy after rain. Do not enter the current. Keep children inland of the last dry step. Emergency — 112.
+  hi: बारिश के बाद किनारे ढलान वाले और कीचड़ भरे हो सकते हैं। धार में न उतरें। बच्चों को आखिरी सूखी सीढ़ी के अंदर रखें। आपातकाल — ११२।
+festival_hubs:
+  - narmada-jayanti
+sources: []
+images: []
