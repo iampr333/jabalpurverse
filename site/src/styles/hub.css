@@ -1230,6 +1230,10 @@ html:has(.hub--immersive) body {
   padding: 1.2rem 1.25rem 1.35rem;
 }
 
+.hub--utsav .ghat-hero {
+  min-height: min(92dvh, 48rem);
+}
+
 .hub--utsav .hub-chapter--story {
   min-height: min(85dvh, 40rem);
   align-items: flex-end;
