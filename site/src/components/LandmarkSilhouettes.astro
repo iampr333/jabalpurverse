@@ -41,7 +41,14 @@ const landmarks = [
   <div class="chapters__join" aria-hidden="true"></div>
   {
     landmarks.map((place, index) => (
-      <section class:list={["chapter", index === 0 && "chapter--first"]} id={place.id}>
+      <section
+        class:list={[
+          "chapter",
+          index === 0 && "chapter--first",
+          index === landmarks.length - 1 && "chapter--last",
+        ]}
+        id={place.id}
+      >
         <img
           class="chapter__photo"
           src={place.image}
@@ -67,7 +74,6 @@ const landmarks = [
             <span>{place.hintEn}</span>
           </p>
         </div>
-        <div class="chapter__join" aria-hidden="true"></div>
       </section>
     ))
   }
@@ -86,10 +92,10 @@ const landmarks = [
     z-index: 1;
   }
 
-  /* Solid river corridor between hero and first photo — no edge-to-edge cut. */
+  /* Tiny corridor only between Narmada hero and Dhuandhar. */
   .chapters__join {
-    height: 4vh;
-    min-height: 1.5rem;
+    height: 2vh;
+    min-height: 0.75rem;
     background: #0a4f51;
   }
 
@@ -103,41 +109,40 @@ const landmarks = [
     margin-top: 0;
   }
 
-  /* Soft entry from river tone — short so photos stay dominant. */
-  .chapter::before {
+  /* Soft entry only on the first place photo (after sunset hero). */
+  .chapter--first::before {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    height: 18vh;
+    height: 10vh;
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(
       180deg,
       #0a4f51 0%,
-      rgba(10, 79, 81, 0.8) 22%,
-      rgba(10, 79, 81, 0.4) 48%,
-      rgba(10, 79, 81, 0.12) 75%,
+      rgba(10, 79, 81, 0.7) 30%,
+      rgba(10, 79, 81, 0.25) 65%,
       transparent 100%
     );
   }
 
-  /* Soft exit into river corridor before the next chapter. */
-  .chapter__join {
+  /* Soft exit only into the footer credit — not between place photos. */
+  .chapter--last::after {
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 18vh;
+    height: 10vh;
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(10, 79, 81, 0.12) 25%,
-      rgba(10, 79, 81, 0.4) 52%,
-      rgba(10, 79, 81, 0.8) 78%,
+      rgba(10, 79, 81, 0.25) 45%,
+      rgba(10, 79, 81, 0.7) 75%,
       #0a4f51 100%
     );
   }
@@ -156,9 +161,9 @@ const landmarks = [
     inset: 0;
     background: linear-gradient(
       180deg,
-      transparent 40%,
-      color-mix(in srgb, #0a4f51 25%, transparent) 70%,
-      color-mix(in srgb, #0a4f51 45%, transparent) 100%
+      transparent 55%,
+      color-mix(in srgb, #0a4f51 18%, transparent) 82%,
+      color-mix(in srgb, #0a4f51 35%, transparent) 100%
     );
     pointer-events: none;
     z-index: 1;

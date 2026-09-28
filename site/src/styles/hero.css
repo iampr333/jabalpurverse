@@ -44,22 +44,21 @@
   pointer-events: none;
 }
 
-/* Soft river wash at the bottom — short so photos stay dominant. */
+/* Soft river wash at the bottom — short bridge into Dhuandhar only. */
 .hero-bleed::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 18vh;
+  height: 10vh;
   z-index: 3;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(10, 79, 81, 0.08) 28%,
-    rgba(10, 79, 81, 0.35) 55%,
-    rgba(10, 79, 81, 0.75) 82%,
+    rgba(10, 79, 81, 0.2) 40%,
+    rgba(10, 79, 81, 0.65) 75%,
     #0a4f51 100%
   );
 }
