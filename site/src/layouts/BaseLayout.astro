@@ -1,5 +1,6 @@
 ---
-import "../styles/tokens.css";
+import "../styles/app.css";
+import RiverBackdrop from "../components/RiverBackdrop.astro";
 
 interface Props {
   title?: string;
@@ -27,7 +28,10 @@ const { title = "Jabalpurverse", description = "Explore Jabalpur. Discover its s
     />
     <title>{title}</title>
   </head>
-  <body>
-    <slot />
+  <body class="relative min-h-dvh">
+    <RiverBackdrop />
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>

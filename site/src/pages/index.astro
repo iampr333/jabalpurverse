@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LandmarkSilhouettes from "../components/LandmarkSilhouettes.astro";
 import { ShellChrome } from "../components/ShellChrome";
 ---
 
 <BaseLayout title="Jabalpurverse · नर्मदे हर">
   <ShellChrome client:load />
+  <div class="relative z-10 mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+    <LandmarkSilhouettes />
+  </div>
 </BaseLayout>

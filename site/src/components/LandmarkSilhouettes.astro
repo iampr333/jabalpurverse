@@ -1,0 +1,200 @@
+---
+/**
+ * Decorative bilingual landmark strip — original SVG silhouettes + Commons photos.
+ * Not place pages; no unverified facts.
+ */
+const landmarks = [
+  {
+    id: "bhedaghat",
+    nameHi: "भेड़ाघाट",
+    nameEn: "Bhedaghat",
+    hintHi: "संगमरमर की चट्टानें",
+    hintEn: "Marble Rocks",
+    image: "/images/atmosphere/marble-rocks-bhedaghat.jpg",
+    imageAlt: "Marble Rocks gorge on the Narmada at Bhedaghat",
+  },
+  {
+    id: "madan-mahal",
+    nameHi: "मदन महल",
+    nameEn: "Madan Mahal",
+    hintHi: "पहाड़ी किला",
+    hintEn: "Hill fort",
+    image: "/images/atmosphere/madan-mahal-fort.jpg",
+    imageAlt: "Madan Mahal fort on the hill overlooking Jabalpur",
+  },
+  {
+    id: "gwarighat",
+    nameHi: "ग्वारीघाट",
+    nameEn: "Gwarighat",
+    hintHi: "नर्मदा आरती",
+    hintEn: "Narmada aarti",
+    image: "/images/atmosphere/gwarighat-sunrise.jpg",
+    imageAlt: "Sunrise at Gwarighat on the Narmada",
+  },
+] as const;
+---
+
+<section class="landmarks" aria-label="Jabalpur places">
+  <ul class="landmarks__list">
+    {
+      landmarks.map((place) => (
+        <li class="landmarks__item">
+          <figure class="landmarks__card">
+            <div class="landmarks__media">
+              <img
+                src={place.image}
+                alt={place.imageAlt}
+                width="640"
+                height="400"
+                loading="lazy"
+                decoding="async"
+              />
+              <svg class="landmarks__silhouette" viewBox="0 0 120 48" aria-hidden="true">
+                {place.id === "bhedaghat" && (
+                  <path
+                    fill="currentColor"
+                    d="M0 48 V28 L12 22 L22 30 L34 14 L46 28 L58 10 L70 26 L82 16 L94 30 L106 18 L120 28 V48 Z"
+                  />
+                )}
+                {place.id === "madan-mahal" && (
+                  <path
+                    fill="currentColor"
+                    d="M0 48 V36 L28 36 L36 20 L44 12 L52 20 L58 8 L64 20 L72 14 L80 24 L88 36 L120 36 V48 Z"
+                  />
+                )}
+                {place.id === "gwarighat" && (
+                  <>
+                    <path
+                      fill="currentColor"
+                      d="M0 48 V34 H18 V28 H28 V34 H42 V26 H52 V34 H68 V30 H80 V34 H120 V48 Z"
+                    />
+                    <circle cx="96" cy="18" r="4" fill="currentColor" opacity="0.7" />
+                  </>
+                )}
+              </svg>
+            </div>
+            <figcaption class="landmarks__caption">
+              <span class="landmarks__name" lang="hi">
+                {place.nameHi}
+              </span>
+              <span class="landmarks__sep"> · </span>
+              <span class="landmarks__name">{place.nameEn}</span>
+              <span class="landmarks__hint">
+                <span lang="hi">{place.hintHi}</span>
+                <span aria-hidden="true"> · </span>
+                <span>{place.hintEn}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="landmarks__credit">
+    Photos: Wikimedia Commons (CC BY-SA) ·
+    <a href="/images/credits/ATTRIBUTION.md">Attribution</a>
+  </p>
+</section>
+
+<style>
+  .landmarks {
+    margin-top: clamp(2rem, 6vw, 3.5rem);
+    max-width: 56rem;
+  }
+
+  .landmarks__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 720px) {
+    .landmarks__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .landmarks__card {
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--marble) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--river) 18%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .landmarks__media {
+    position: relative;
+    aspect-ratio: 8 / 5;
+    overflow: hidden;
+    background: var(--river-soft);
+  }
+
+  .landmarks__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.9);
+  }
+
+  .landmarks__silhouette {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 32%;
+    color: color-mix(in srgb, var(--river-deep) 55%, transparent);
+    pointer-events: none;
+  }
+
+  .landmarks__caption {
+    padding: 0.75rem 0.9rem 0.95rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0;
+  }
+
+  .landmarks__name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--river-deep);
+  }
+
+  .landmarks__sep {
+    color: var(--muted);
+  }
+
+  .landmarks__hint {
+    flex-basis: 100%;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .landmarks__credit {
+    margin: 0.85rem 0 0;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .landmarks__credit a {
+    color: var(--river);
+    text-underline-offset: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .landmarks__card {
+      background: color-mix(in srgb, #0f1616 70%, transparent);
+      border-color: color-mix(in srgb, var(--river-soft) 25%, transparent);
+    }
+    .landmarks__name {
+      color: color-mix(in srgb, var(--river-soft) 80%, white);
+    }
+  }
+</style>

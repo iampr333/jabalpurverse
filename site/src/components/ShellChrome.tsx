@@ -12,7 +12,7 @@ const copy = {
     lang: "हिंदी",
     greetingOff: "Hide greeting",
     greetingOn: "Show greeting",
-    phase: "Foundation (P0) — shell only. Explore and Utsav come next.",
+    sookoon: "The Narmada flows through this city — and through this page.",
   },
   hi: {
     brand: "जबलपुरवर्स",
@@ -23,7 +23,7 @@ const copy = {
     lang: "English",
     greetingOff: "अभिवादन छिपाएँ",
     greetingOn: "अभिवादन दिखाएँ",
-    phase: "आधार (P0) — केवल शेल। एक्सप्लोर और उत्सव आगे आएँगे।",
+    sookoon: "नर्मदा इस शहर में बहती है — और इस पृष्ठ में भी।",
   },
 } as const;
 
@@ -59,10 +59,13 @@ export function ShellChrome() {
   }
 
   return (
-    <div class="shell">
-      <header class="top">
-        <a class="brand" href="/">
-          <span class="mark" aria-hidden="true">
+    <div class="shell relative z-10 mx-auto flex min-h-dvh max-w-6xl flex-col px-4 pb-10 pt-4 sm:px-6">
+      <header class="top flex flex-wrap items-center justify-between gap-3">
+        <a
+          class="brand inline-flex items-center gap-2 font-display text-xl text-ink no-underline"
+          href="/"
+        >
+          <span class="mark inline-flex text-river" aria-hidden="true">
             <svg viewBox="0 0 64 24" width="64" height="24">
               <path
                 d="M2 14 C18 2, 46 2, 62 14"
@@ -75,33 +78,48 @@ export function ShellChrome() {
           </span>
           {t.brand}
         </a>
-        <div class="actions">
-          <button type="button" class="ghost" onClick={toggleGreeting}>
+        <div class="actions flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            class="ghost min-h-11 rounded-brand border border-river/35 bg-marble/55 px-3 py-2 text-ink backdrop-blur-sm"
+            onClick={toggleGreeting}
+          >
             {greetingOn ? t.greetingOff : t.greetingOn}
           </button>
-          <button type="button" class="ghost" onClick={toggleLang}>
+          <button
+            type="button"
+            class="ghost min-h-11 rounded-brand border border-river/35 bg-marble/55 px-3 py-2 text-ink backdrop-blur-sm"
+            onClick={toggleLang}
+          >
             {t.lang}
           </button>
-          <a class="support" href="/support">
+          <a
+            class="support min-h-11 rounded-brand border border-diya bg-diya px-3 py-2 text-white no-underline"
+            href="/support"
+          >
             {t.support}
           </a>
         </div>
       </header>
 
-      <main class="hero">
+      <main class="hero flex flex-1 flex-col justify-center py-12 sm:py-16">
         {greetingOn && (
-          <p class="greeting">
+          <p class="greeting mb-2 font-display text-lg text-river">
             <span lang="hi">{t.greetingHi}</span>
             <span class="sep"> · </span>
             <span>{t.greeting}</span>
           </p>
         )}
-        <h1>{t.brand}</h1>
-        <p class="tagline">{t.tagline}</p>
-        <p class="phase">{t.phase}</p>
+        <h1 class="mb-4 font-display text-[clamp(2.5rem,7vw,3.75rem)] leading-[1.05] text-river-deep">
+          {t.brand}
+        </h1>
+        <p class="tagline mb-3 max-w-xl text-lg text-muted">{t.tagline}</p>
+        <p class="sookoon max-w-md border-l-[3px] border-diya pl-3 text-[0.95rem] text-muted">
+          {t.sookoon}
+        </p>
       </main>
 
-      <footer class="foot">
+      <footer class="foot mt-auto border-t border-muted/25 pt-3 text-sm text-muted">
         <p>
           {greetingOn ? (
             <>
@@ -112,95 +130,6 @@ export function ShellChrome() {
           )}
         </p>
       </footer>
-
-      <style>{`
-        .shell {
-          min-height: 100dvh;
-          display: flex;
-          flex-direction: column;
-          max-width: var(--max);
-          margin: 0 auto;
-          padding: var(--space-3) var(--space-4) var(--space-5);
-        }
-        .top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--space-3);
-          flex-wrap: wrap;
-        }
-        .brand {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2);
-          color: var(--text);
-          text-decoration: none;
-          font-size: 1.35rem;
-        }
-        .mark { color: var(--river); display: inline-flex; }
-        .actions {
-          display: flex;
-          gap: var(--space-2);
-          align-items: center;
-          flex-wrap: wrap;
-        }
-        .ghost, .support {
-          font: inherit;
-          border: 1px solid color-mix(in srgb, var(--river) 35%, transparent);
-          background: transparent;
-          color: var(--text);
-          padding: 0.4rem 0.75rem;
-          border-radius: var(--radius);
-          cursor: pointer;
-          text-decoration: none;
-        }
-        .support {
-          background: var(--diya);
-          border-color: var(--diya);
-          color: #fff;
-        }
-        .hero {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: var(--space-5) 0;
-          max-width: 36rem;
-        }
-        .greeting {
-          color: var(--river);
-          font-family: var(--font-display);
-          font-size: 1.15rem;
-          margin: 0 0 var(--space-2);
-        }
-        h1 {
-          font-size: clamp(2.4rem, 6vw, 3.6rem);
-          line-height: 1.05;
-          margin: 0 0 var(--space-3);
-          color: var(--river-deep);
-        }
-        @media (prefers-color-scheme: dark) {
-          h1 { color: var(--river-soft); filter: brightness(1.8); }
-        }
-        .tagline {
-          font-size: 1.15rem;
-          margin: 0 0 var(--space-3);
-          color: var(--muted);
-        }
-        .phase {
-          margin: 0;
-          font-size: 0.95rem;
-          color: var(--muted);
-          border-left: 3px solid var(--diya);
-          padding-left: var(--space-3);
-        }
-        .foot {
-          border-top: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
-          padding-top: var(--space-3);
-          color: var(--muted);
-          font-size: 0.9rem;
-        }
-      `}</style>
     </div>
   );
 }

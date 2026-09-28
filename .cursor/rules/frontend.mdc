@@ -9,8 +9,8 @@ alwaysApply: false
 ## Stack
 
 - **Astro** prerender by default. Interactive UI = **Preact islands only**.
-- Do not add React, Svelte, Vue, or Tailwind unless explicitly asked.
-- Use CSS variables from `site/src/styles/tokens.css`. No one-off brand hex colors.
+- Do not add React, Svelte, or Vue unless explicitly asked.
+- **Tailwind v4** is allowed (`@tailwindcss/vite`); map colors/fonts to tokens in `site/src/styles/tokens.css` via `@theme`. No one-off brand hex outside tokens.
 
 ## Islands and JS budget
 

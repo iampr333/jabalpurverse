@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme {
+  --color-marble: var(--marble);
+  --color-marble-deep: var(--marble-deep);
+  --color-river: var(--river);
+  --color-river-deep: var(--river-deep);
+  --color-river-soft: var(--river-soft);
+  --color-diya: var(--diya);
+  --color-diya-soft: var(--diya-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-danger: var(--danger);
+  --color-surface: var(--surface);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --radius-brand: var(--radius);
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--river);
+    outline-offset: 3px;
+  }
+
+  body {
+    @apply bg-surface text-ink font-body antialiased;
+  }
+}

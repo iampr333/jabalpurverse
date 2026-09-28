@@ -1,0 +1,142 @@
+---
+---
+<!-- Full-viewport calm Narmada river + marble atmosphere. Decorative only. -->
+<div class="river-backdrop" aria-hidden="true">
+  <div class="river-backdrop__photo river-backdrop__photo--bhedaghat"></div>
+  <div class="river-backdrop__wash"></div>
+  <div class="river-backdrop__grain"></div>
+  <svg class="river-backdrop__waves" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="riverFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0f6b6d" stop-opacity="0.08" />
+        <stop offset="55%" stop-color="#0f6b6d" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="#0a4f51" stop-opacity="0.45" />
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#riverFade)" />
+    <g class="river-backdrop__flow river-backdrop__flow--a" fill="none" stroke="#0f6b6d" stroke-opacity="0.28" stroke-width="1.5" stroke-linecap="round">
+      <path d="M-200 520 C 80 480, 280 560, 560 520 S 1040 460, 1320 510 S 1680 560, 1800 520" />
+      <path d="M-200 560 C 120 520, 320 600, 600 560 S 1080 500, 1360 550 S 1720 600, 1800 560" />
+    </g>
+    <g class="river-backdrop__flow river-backdrop__flow--b" fill="none" stroke="#0a4f51" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
+      <path d="M-240 610 C 40 570, 300 650, 580 610 S 1060 550, 1340 600 S 1700 650, 1840 610" />
+      <path d="M-240 660 C 80 620, 340 700, 620 660 S 1100 600, 1380 650 S 1740 700, 1840 660" />
+    </g>
+    <g class="river-backdrop__flow river-backdrop__flow--c" fill="none" stroke="#d5ecec" stroke-opacity="0.35" stroke-width="1.25" stroke-linecap="round">
+      <path d="M-160 700 C 160 670, 400 740, 680 700 S 1160 650, 1440 690 S 1760 740, 1760 700" />
+    </g>
+    <!-- Marble Rocks / gorge suggestion along the bottom -->
+    <path
+      class="river-backdrop__gorge"
+      d="M0 820 L 90 790 L 160 805 L 240 770 L 320 800 L 410 755 L 500 785 L 590 740 L 690 775 L 780 730 L 880 760 L 980 720 L 1080 755 L 1180 710 L 1280 745 L 1380 715 L 1440 740 L 1440 900 L 0 900 Z"
+      fill="#0a4f51"
+      fill-opacity="0.55"
+    />
+    <path
+      d="M0 840 L 120 815 L 220 835 L 340 800 L 460 825 L 580 790 L 720 820 L 860 785 L 1000 815 L 1140 780 L 1280 810 L 1440 785 L 1440 900 L 0 900 Z"
+      fill="#1a1c1b"
+      fill-opacity="0.18"
+    />
+  </svg>
+  <div class="river-backdrop__dawn"></div>
+</div>
+
+<style>
+  .river-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .river-backdrop__photo {
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/atmosphere/marble-rocks-bhedaghat.jpg");
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.18;
+    filter: saturate(0.75) contrast(0.95);
+  }
+
+  .river-backdrop__wash {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, #f7f5f1 0%, color-mix(in srgb, #f7f5f1 72%, transparent) 28%, transparent 55%),
+      linear-gradient(0deg, color-mix(in srgb, #0a4f51 35%, #f7f5f1) 0%, transparent 42%),
+      radial-gradient(900px 480px at 85% 12%, color-mix(in srgb, #f3d9c8 55%, transparent), transparent 60%);
+  }
+
+  .river-backdrop__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: repeating-linear-gradient(
+      -12deg,
+      transparent 0,
+      transparent 2px,
+      color-mix(in srgb, #1a1c1b 18%, transparent) 2px,
+      color-mix(in srgb, #1a1c1b 18%, transparent) 3px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  .river-backdrop__waves {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .river-backdrop__dawn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--diya), transparent);
+    opacity: 0.55;
+  }
+
+  .river-backdrop__flow--a {
+    animation: river-drift 32s linear infinite;
+  }
+  .river-backdrop__flow--b {
+    animation: river-drift 44s linear infinite reverse;
+  }
+  .river-backdrop__flow--c {
+    animation: river-drift 26s linear infinite;
+  }
+
+  @keyframes river-drift {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-180px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .river-backdrop__flow--a,
+    .river-backdrop__flow--b,
+    .river-backdrop__flow--c {
+      animation: none !important;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .river-backdrop__photo {
+      opacity: 0.28;
+      filter: saturate(0.65) brightness(0.7);
+    }
+    .river-backdrop__wash {
+      background:
+        linear-gradient(180deg, #0f1616 0%, color-mix(in srgb, #0f1616 75%, transparent) 32%, transparent 58%),
+        linear-gradient(0deg, color-mix(in srgb, #0a4f51 55%, #0f1616) 0%, transparent 45%),
+        radial-gradient(900px 480px at 85% 12%, color-mix(in srgb, #3a2418 40%, transparent), transparent 60%);
+    }
+  }
+</style>
