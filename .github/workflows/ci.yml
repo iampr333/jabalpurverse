@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install
+        run: npm install
+      - name: Validate content
+        run: npm run validate
+      - name: Astro check
+        run: npm run check -w site
+      - name: Build
+        run: npm run build -w site
+        env:
+          PUBLIC_SUPABASE_URL: https://dsjmjxrnqedypuolguow.supabase.co
+          PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}

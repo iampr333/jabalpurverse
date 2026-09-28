@@ -1,0 +1,21 @@
+# content/config.yaml — kill-switches and transport rates (P0 stubs)
+flags:
+  utsav_mode: false
+  utsav_routes_enabled: false
+  pings_enabled: false
+  push_enabled: false
+  uploads_enabled: false
+  signups_enabled: false
+  votes_enabled: false
+  realtime_enabled: false
+  ai_enabled: false
+  ssr_enabled: true
+
+transport_rates:
+  checked_at: 2026-09-28
+  city_bus: { min_fare: 10, per_km_low: 1, per_km_high: 2 }
+  shared_tempo: { min_fare: 10, per_km_low: 2, per_km_high: 4 }
+  auto_reserve: { min_fare: 30, per_km_low: 12, per_km_high: 18 }
+  cab: { min_fare: 50, per_km_low: 14, per_km_high: 22 }
+  bike_fuel: { min_fare: 0, per_km_low: 2, per_km_high: 3 }
+  car_fuel: { min_fare: 0, per_km_low: 6, per_km_high: 9 }

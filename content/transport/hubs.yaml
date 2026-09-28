@@ -1,0 +1,17 @@
+# Transport hubs for Getting There origin selector (§6.15)
+hubs:
+  - id: jabalpur-junction
+    name: { en: Jabalpur Junction (JBP), hi: जबलपुर जंक्शन }
+    coords: [79.9505, 23.1654]
+  - id: madan-mahal-station
+    name: { en: Madan Mahal Station, hi: मदन महल स्टेशन }
+    coords: [79.935, 23.16]
+  - id: bus-stand
+    name: { en: Main Bus Stand, hi: मुख्य बस स्टैंड }
+    coords: [79.933, 23.168]
+  - id: dumna-airport
+    name: { en: Dumna Airport (JLR), hi: डुमना हवाई अड्डा }
+    coords: [80.058, 23.178]
+  - id: napier-town
+    name: { en: Napier Town / City Centre, hi: नेपियर टाउन }
+    coords: [79.933, 23.166]

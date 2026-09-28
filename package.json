@@ -1,0 +1,20 @@
+{
+  "name": "jabalpurverse",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "site",
+    "scripts"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w site",
+    "build": "npm run validate && npm run build -w site",
+    "check": "npm run check -w site",
+    "validate": "npm run validate -w scripts",
+    "preview": "npm run preview -w site"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

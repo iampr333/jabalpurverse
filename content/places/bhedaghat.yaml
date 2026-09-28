@@ -1,0 +1,24 @@
+# Draft fixture — unverified; must NOT pass published rules
+id: bhedaghat
+slug: bhedaghat
+name:
+  en: Bhedaghat (Marble Rocks)
+  hi: भेड़ाघाट
+aliases:
+  - bheraghat
+  - marble rocks
+  - भेड़ाघाट
+category: tourism/nature
+tags:
+  - narmada
+  - marble-rocks
+  - boating
+coords: [79.812, 23.130]
+area: Bhedaghat
+summary:
+  en: Marble gorge on the Narmada — draft entry pending local verification.
+  hi: नर्मदा पर संगमरमर की घाटी — सत्यापन बाकी।
+status: draft
+sources: []
+images: []
+# verified_at omitted until editorial check

@@ -1,0 +1,57 @@
+# Validator test fixture — complete published tourism place (synthetic sources for CI)
+id: balancing-rock-demo
+slug: balancing-rock-demo
+name:
+  en: Balancing Rock (demo fixture)
+  hi: बैलेंसिंग रॉक (डेमो)
+aliases:
+  - balancing rock
+category: tourism/nature
+tags:
+  - heritage
+  - photography
+coords: [79.95, 23.15]
+area: Madan Mahal
+summary:
+  en: CI fixture only — not for public copy without re-verification.
+  hi: केवल CI फिक्स्चर — प्रकाशन से पहले पुनः जाँच।
+description:
+  en: Synthetic place used to prove published validation rules.
+  hi: प्रकाशित नियमों की जाँच के लिए सिंथेटिक स्थान।
+timings:
+  weekly:
+    mon: "06:00-18:00"
+    tue: "06:00-18:00"
+    wed: "06:00-18:00"
+    thu: "06:00-18:00"
+    fri: "06:00-18:00"
+    sat: "06:00-18:00"
+    sun: "06:00-18:00"
+  checked_at: 2026-09-28
+entry:
+  fees:
+    - { who: "Indian adult", inr: 0, note: "demo" }
+  checked_at: 2026-09-28
+access:
+  legs:
+    - from: jabalpur-junction
+      road_km: 6
+      options:
+        - mode: auto
+          duration_min: [25, 40]
+          fare_inr: [100, 180]
+          checked_at: 2026-09-28
+          source: { type: editorial, url: "https://example.com/demo" }
+images:
+  - file: balancing-rock-demo.webp
+    alt: Balancing rock near Madan Mahal (demo)
+    credit: Demo fixture
+    license: CC0-1.0
+    source_url: https://example.com/demo-image
+sources:
+  - type: editorial
+    url: https://example.com/demo
+    accessed: 2026-09-28
+verified_at: 2026-09-28
+verified_by: ci
+status: published

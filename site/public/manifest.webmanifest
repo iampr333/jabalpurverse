@@ -1,0 +1,18 @@
+{
+  "name": "Jabalpurverse",
+  "short_name": "Jabalpurverse",
+  "description": "Explore Jabalpur. Discover its stories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5f1",
+  "theme_color": "#0f6b6d",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
